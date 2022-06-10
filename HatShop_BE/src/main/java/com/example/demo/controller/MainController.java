@@ -11,7 +11,8 @@ public class MainController {
     @GetMapping(value = "/hello")
     @ResponseBody
     public  String hello (){
-        return "hello word";
+        return "hello wordddddddđ";
     }
+
 
 }
