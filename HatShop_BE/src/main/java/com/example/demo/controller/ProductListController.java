@@ -19,7 +19,10 @@ public class ProductListController {
 
     @GetMapping(value = "/detailProduct/{id}")
     public Products detailProduct(@PathVariable(name="id") int id) {
-        return productService.getProductDetail(id);
+        System.err.println(id);
+        Products s =productService.getProductDetail(id);
+        System.err.println(s.toString());
+        return s;
     }
 
 
