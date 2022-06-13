@@ -22,4 +22,8 @@ public class ProductService {
     public List<Products> findByName(String name){
         return productRepository.findByNameContainingIgnoreCase(name);
     }
+    public Products getProductDetail(int id){
+        return  productRepository.findById(id);
+    }
+
 }
