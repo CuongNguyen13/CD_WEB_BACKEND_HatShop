@@ -23,7 +23,7 @@ public class ProductService {
         return productRepository.findByNameContainingIgnoreCase(name);
     }
     public Products getProductDetail(int id){
-        return  productRepository.findById(id);
+        return  productRepository.findProductsById(id);
     }
 
 }

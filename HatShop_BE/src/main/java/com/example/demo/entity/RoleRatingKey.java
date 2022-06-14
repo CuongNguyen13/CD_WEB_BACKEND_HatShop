@@ -1,10 +1,15 @@
 package com.example.demo.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Getter
+@Setter
 @Embeddable
 public class RoleRatingKey implements Serializable {
     @Column(name = "user_id")
@@ -22,21 +27,6 @@ public class RoleRatingKey implements Serializable {
 
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
-    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,9 +1,14 @@
 package com.example.demo.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "contacts")
 public class Contact {
     @Id
@@ -27,44 +32,4 @@ public class Contact {
     public Contact() {
     }
 
-    public int getContactId() {
-        return id;
-    }
-
-    public void setContactId(int contactId) {
-        this.id = contactId;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Date getDateSend() {
-        return dateSend;
-    }
-
-    public void setDateSend(Date dateSend) {
-        this.dateSend = dateSend;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-
-    public User getUserId() {
-        return user;
-    }
-
-    public void setUserId(User user) {
-        this.user = user;
-    }
 }

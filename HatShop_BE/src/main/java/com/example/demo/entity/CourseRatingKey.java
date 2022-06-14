@@ -1,11 +1,16 @@
 package com.example.demo.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
+@Getter
+@Setter
 public class CourseRatingKey implements Serializable {
     @Column(name = "product_id")
     int productId;
@@ -16,21 +21,7 @@ public class CourseRatingKey implements Serializable {
     public CourseRatingKey() {
     }
 
-    public int getProductId() {
-        return productId;
-    }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-
-    public int getCartId() {
-        return cartId;
-    }
-
-    public void setCartId(int cartId) {
-        this.cartId = cartId;
-    }
 
     @Override
     public boolean equals(Object o) {

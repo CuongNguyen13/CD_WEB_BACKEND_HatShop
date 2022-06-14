@@ -1,9 +1,14 @@
 package com.example.demo.entity;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
 @Table(name = "profile")
+@Getter
+@Setter
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,67 +40,5 @@ public class Profile {
     public Profile() {
     }
 
-    public int getRoleId() {
-        return id;
-    }
 
-    public void setRoleId(int profileId) {
-        this.id = profileId;
-    }
-
-    public String getAvatarlink() {
-        return avatarlink;
-    }
-
-    public void setAvatarlink(String avatarlink) {
-        this.avatarlink = avatarlink;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getWorkplace() {
-        return workplace;
-    }
-
-    public void setWorkplace(String workplace) {
-        this.workplace = workplace;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }
