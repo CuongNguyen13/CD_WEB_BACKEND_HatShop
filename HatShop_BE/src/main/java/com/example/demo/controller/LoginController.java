@@ -30,7 +30,7 @@ public class LoginController {
         return new ModelAndView("redirect:/forgetpass", model);
     }
 
-    @RequestMapping(value = {"" , "/login"} , method = RequestMethod.GET)
+    @RequestMapping(value = {"/" , "/login"} , method = RequestMethod.GET)
     public ModelAndView loginPage(ModelMap model){
         return new ModelAndView("login" , model);
     }

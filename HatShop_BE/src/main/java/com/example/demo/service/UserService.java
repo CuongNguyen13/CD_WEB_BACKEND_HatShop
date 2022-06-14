@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.entity.User;
 import com.example.demo.model.UserModel;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.repository.UserRoleRepository;
 import com.example.demo.utilities.ConvertUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ public class UserService {
     UserRepository userRepository;
     @Autowired
     ConvertUser convertUser;
+    @Autowired
+    UserRoleRepository userRoleRepository;
 
     public User findByEmail(String email) {
         return userRepository.findFirstByEmail(email);
@@ -75,4 +78,5 @@ public class UserService {
         }
         return false ;
     }
+
 }

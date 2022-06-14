@@ -42,9 +42,12 @@ public class User {
     @Column(name = "time_recovery")
     private long timeRecovery;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "user")
-    private List<UserRole> listUserRole = new ArrayList<>();
+    @Column(name = "enable")
+    private boolean enable;
+
+    @ManyToMany
+    @JoinTable(name = "userRole", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<Role> listRole;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user")
@@ -66,7 +69,6 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Bill> listBill = new ArrayList<>();
 
-
     public int getId() {
         return id;
     }
@@ -75,11 +77,11 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
+    public String getEmail() {
         return email;
     }
 
-    public void setUsername(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -89,14 +91,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getFistName() {
@@ -139,22 +133,6 @@ public class User {
         this.address = address;
     }
 
-    public List<UserRole> getUserRole() {
-        return listUserRole;
-    }
-
-    public void setUserRole(List<UserRole> listUserRole) {
-        this.listUserRole = listUserRole;
-    }
-
-    public List<Products> getListProduct() {
-        return listProduct;
-    }
-
-    public void setListProduct(List<Products> listProduct) {
-        this.listProduct = listProduct;
-    }
-
     public String getCodeRecovery() {
         return codeRecovery;
     }
@@ -169,6 +147,62 @@ public class User {
 
     public void setTimeRecovery(long timeRecovery) {
         this.timeRecovery = timeRecovery;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
+
+    public List<Role> getListRole() {
+        return listRole;
+    }
+
+    public void setListRole(List<Role> listRole) {
+        this.listRole = listRole;
+    }
+
+    public List<Cart> getListCart() {
+        return listCart;
+    }
+
+    public void setListCart(List<Cart> listCart) {
+        this.listCart = listCart;
+    }
+
+    public List<Contact> getListContact() {
+        return listContact;
+    }
+
+    public void setListContact(List<Contact> listContact) {
+        this.listContact = listContact;
+    }
+
+    public List<Products> getListProduct() {
+        return listProduct;
+    }
+
+    public void setListProduct(List<Products> listProduct) {
+        this.listProduct = listProduct;
+    }
+
+    public List<Prepayment> getListPrepayment() {
+        return listPrepayment;
+    }
+
+    public void setListPrepayment(List<Prepayment> listPrepayment) {
+        this.listPrepayment = listPrepayment;
+    }
+
+    public List<Bill> getListBill() {
+        return listBill;
+    }
+
+    public void setListBill(List<Bill> listBill) {
+        this.listBill = listBill;
     }
 
     public User() {

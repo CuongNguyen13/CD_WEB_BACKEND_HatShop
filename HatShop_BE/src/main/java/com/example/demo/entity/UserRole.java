@@ -5,43 +5,49 @@ import javax.persistence.*;
 @Entity
 @Table(name = "userRole")
 public class UserRole {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    @EmbeddedId
+    private RoleRatingKey id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @MapsId("user_id")
     @JoinColumn(name = "user_id")
-    private User user;
+    private User userId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "appRole_id")
-    private AppRole appRoleId;
+    @ManyToOne
+    @MapsId("role_id")
+    @JoinColumn(name = "role_id")
+    private Role roleId;
 
     public UserRole() {
     }
 
-    public int getUserRoleId() {
+    public UserRole(RoleRatingKey roleRatingKey, User user, Role role) {
+        this.id = roleRatingKey;
+        this.userId = user;
+        this.roleId = role;
+    }
+
+    public RoleRatingKey getId() {
         return id;
     }
 
-    public void setUserRoleId(int userRoleId) {
-        this.id = userRoleId;
+    public void setId(RoleRatingKey id) {
+        this.id = id;
     }
 
     public User getUserId() {
-        return user;
+        return userId;
     }
 
-    public void setUserId(User user) {
-        this.user = user;
+    public void setUserId(User userId) {
+        this.userId = userId;
     }
 
-    public AppRole getRoleId() {
-        return appRoleId;
+    public Role getRoleId() {
+        return roleId;
     }
 
-    public void setRoleId(AppRole appRoleId) {
-        this.appRoleId = appRoleId;
+    public void setRoleId(Role roleId) {
+        this.roleId = roleId;
     }
 }

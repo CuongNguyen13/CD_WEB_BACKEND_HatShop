@@ -15,11 +15,16 @@ public class SearchContronller {
     @Autowired
     ProductService productService;
 
-    @RequestMapping(value = "/Search")
+    @RequestMapping(value = "/search")
     public ModelAndView home(@RequestParam(name="field") String field) {
         ModelAndView mav = new ModelAndView("search");
         List<Products> listByName = productService.findByName(field);
         mav.addObject("listByName", listByName);
+        return mav;
+    }
+    @RequestMapping(value = "/index")
+    public ModelAndView home() {
+        ModelAndView mav = new ModelAndView("index");
         return mav;
     }
 }

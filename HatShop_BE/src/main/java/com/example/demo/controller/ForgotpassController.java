@@ -1,9 +1,12 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.ObjectResponse;
 import com.example.demo.service.UserService;
 import com.example.demo.utilities.RenderOTP;
 import com.example.demo.utilities.SendEmail;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +22,8 @@ public class ForgotpassController {
     SendEmail mailSender;
     @Autowired
     RenderOTP otp;
+    @Autowired
+    SendEmail sendEmail ;
 
     @RequestMapping(value = "/forgetpass",method = RequestMethod.GET)
         public ModelAndView forgetPass(ModelMap model){
@@ -62,5 +67,19 @@ public class ForgotpassController {
         model.addAttribute("resetPass" , true);
         userService.updatePass(pass);
         return new ModelAndView("redirect:/login" , model);
+    }
+
+    @RequestMapping(value = "/resetOTP" , method = RequestMethod.GET)
+//    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<ObjectResponse> resetOTP(@RequestParam("email") String email ){
+
+        if(userService.validTimeCode(email)) return ResponseEntity.status(HttpStatus.OK)
+                .body(
+                        new ObjectResponse("RUNNING", "")
+                );
+        sendEmail.sendEmail(email,otp.createOTP());
+        userService.updateCodeAndTimeResetPass(email, otp.getCode());
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new ObjectResponse("SUCCESS",""));
     }
 }

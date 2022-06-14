@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "appRole")
-public class AppRole {
+@Table(name = "role")
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -18,11 +18,15 @@ public class AppRole {
     @Column(name = "roleName")
     private String roleName;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "appRoleId")
-    private List<UserRole> appRoleList = new ArrayList<>();
+    @ManyToMany(mappedBy = "listRole")
+    private List<User> listUser = new ArrayList<>();
 
-    public AppRole() {
+    public Role(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public Role() {
+
     }
 
     public int getRoleId() {
@@ -39,5 +43,22 @@ public class AppRole {
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    public List<User> getListUser() {
+        return listUser;
+    }
+
+    public void setListUser(List<User> listUser) {
+        this.listUser = listUser;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", roleName='" + roleName + '\'' +
+                ", listUser=" + listUser +
+                '}';
     }
 }

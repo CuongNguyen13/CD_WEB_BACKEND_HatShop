@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/Search">
+<form action="/search">
     <input name="field">
     <input type="submit" value="click">
 </form>
