@@ -19,9 +19,6 @@ public class Bill {
     @Column(name = "quantity")
     private int quantity;
 
-    @Column(name = "totalPrice")
-    private double totalPrice;
-
     @OneToOne
     @JoinColumn(name = "prepayment_id")
     private Prepayment prepayment;
@@ -63,14 +60,6 @@ public class Bill {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
     }
 
     public Prepayment getPrepayment() {

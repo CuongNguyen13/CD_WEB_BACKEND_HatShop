@@ -31,9 +31,6 @@ public class Prepayment {
     @Column(name = "phoneNumber")
     private int phoneNumber;
 
-    @Column(name = "totalPrice")
-    private double totalPrice;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
@@ -107,14 +104,6 @@ public class Prepayment {
 
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
     }
 
     public User getUser() {

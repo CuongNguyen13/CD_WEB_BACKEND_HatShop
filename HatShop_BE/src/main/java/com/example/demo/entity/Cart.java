@@ -36,9 +36,6 @@ public class Cart {
     @Column(name = "linkImage")
     private String linkImage;
 
-    @Column(name = "totalPrice")
-    private double totalPrice;
-
     @ManyToMany(mappedBy = "listCart")
     private List<Products> listProduct = new ArrayList<>();
 
@@ -107,14 +104,6 @@ public class Cart {
 
     public void setLinkImage(String linkImage) {
         this.linkImage = linkImage;
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
     }
 
     public List<Products> getListCart() {
