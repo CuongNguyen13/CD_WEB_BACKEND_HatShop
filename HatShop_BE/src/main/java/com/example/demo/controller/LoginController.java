@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
@@ -27,6 +28,8 @@ public class LoginController {
             return new ModelAndView("login", model);
         }
         session.setAttribute("user", userService.findByEmail(email));
+        User user = (User) session.getAttribute("user");
+        System.out.println("user : " + user.getListRole());
         return new ModelAndView("redirect:/forgetpass", model);
     }
 
