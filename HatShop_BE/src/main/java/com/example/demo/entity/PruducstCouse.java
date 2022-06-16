@@ -27,5 +27,27 @@ public class PruducstCouse {
     public PruducstCouse() {
     }
 
+    public CourseRatingKey getId() {
+        return id;
+    }
 
+    public void setId(CourseRatingKey id) {
+        this.id = id;
+    }
+
+    public Products getProduct() {
+        return product;
+    }
+
+    public void setProduct(Products product) {
+        this.product = product;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
 }

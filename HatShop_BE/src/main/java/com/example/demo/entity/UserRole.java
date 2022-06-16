@@ -32,5 +32,27 @@ public class UserRole {
         this.roleId = role;
     }
 
-  
+    public RoleRatingKey getId() {
+        return id;
+    }
+
+    public void setId(RoleRatingKey id) {
+        this.id = id;
+    }
+
+    public User getUserId() {
+        return userId;
+    }
+
+    public void setUserId(User userId) {
+        this.userId = userId;
+    }
+
+    public Role getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Role roleId) {
+        this.roleId = roleId;
+    }
 }
