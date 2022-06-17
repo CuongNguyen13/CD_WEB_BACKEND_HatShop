@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,12 +13,12 @@ import javax.persistence.*;
 public class UserRole {
     @EmbeddedId
     private RoleRatingKey id;
-
+    @JsonIgnore
     @ManyToOne
     @MapsId("user_id")
     @JoinColumn(name = "user_id")
     private User userId;
-
+    @JsonIgnore
     @ManyToOne
     @MapsId("role_id")
     @JoinColumn(name = "role_id")
@@ -36,23 +37,4 @@ public class UserRole {
         return id;
     }
 
-    public void setId(RoleRatingKey id) {
-        this.id = id;
-    }
-
-    public User getUserId() {
-        return userId;
-    }
-
-    public void setUserId(User userId) {
-        this.userId = userId;
-    }
-
-    public Role getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Role roleId) {
-        this.roleId = roleId;
-    }
 }

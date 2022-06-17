@@ -24,16 +24,17 @@ public class ProductService {
         return productRepository.findByNameContainingIgnoreCase(name);
     }
     public ProductDTO getProductDetail(int id){
-        Products products=  productRepository.findProductsById(id);
-
+        Products products=  productRepository.findById(id);
           ProductDTO dto = new ProductDTO();
           dto.setName(products.getName());
           dto.setDecription(products.getDescription());
           dto.setPrice(products.getPrice());
-          dto.getKind();
-
-
+          dto.setKind(products.getKind());
           return dto;
     }
+    public Products getProduct(int id){
+        return productRepository.findById(id);
+    }
+
 
 }

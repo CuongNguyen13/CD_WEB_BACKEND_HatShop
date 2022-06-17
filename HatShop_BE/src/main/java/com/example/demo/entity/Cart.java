@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +22,7 @@ public class Cart {
     @Column(name = "id")
     private int id;
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
@@ -42,7 +44,7 @@ public class Cart {
 
     @Column(name = "linkImage")
     private String linkImage;
-
+    @JsonIgnore
     @ManyToMany(mappedBy = "listCart")
     private List<Products> listProduct = new ArrayList<>();
 }

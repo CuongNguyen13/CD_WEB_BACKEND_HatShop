@@ -48,7 +48,7 @@ public class User {
 
     @Column(name = "enable")
     private boolean enable;
-
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "userRole", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> listRole;

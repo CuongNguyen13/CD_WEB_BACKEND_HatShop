@@ -21,10 +21,9 @@ public class Role {
 
     @Column(name = "roleName")
     private String roleName;
-
+    @JsonIgnore
     @ManyToMany(mappedBy = "listRole")
     private List<User> listUser = new ArrayList<>();
-
     public Role() {
 
     }
@@ -38,27 +37,4 @@ public class Role {
                 '}';
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getRoleName() {
-        return roleName;
-    }
-
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
-
-    public List<User> getListUser() {
-        return listUser;
-    }
-
-    public void setListUser(List<User> listUser) {
-        this.listUser = listUser;
-    }
 }

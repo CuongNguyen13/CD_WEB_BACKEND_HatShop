@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,12 +13,12 @@ import javax.persistence.*;
 public class PruducstCouse {
     @EmbeddedId
     private CourseRatingKey id;
-
+    @JsonIgnore
     @ManyToOne
     @MapsId("product_id")
     @JoinColumn(name = "product_id")
     private Products product;
-
+    @JsonIgnore
     @ManyToOne
     @MapsId("cart_id")
     @JoinColumn(name = "cart_id")
@@ -27,27 +28,5 @@ public class PruducstCouse {
     public PruducstCouse() {
     }
 
-    public CourseRatingKey getId() {
-        return id;
-    }
 
-    public void setId(CourseRatingKey id) {
-        this.id = id;
-    }
-
-    public Products getProduct() {
-        return product;
-    }
-
-    public void setProduct(Products product) {
-        this.product = product;
-    }
-
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
-    }
 }

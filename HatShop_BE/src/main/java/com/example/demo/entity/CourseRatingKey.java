@@ -21,21 +21,7 @@ public class CourseRatingKey implements Serializable {
     public CourseRatingKey() {
     }
 
-    public int getProductId() {
-        return productId;
-    }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-
-    public int getCartId() {
-        return cartId;
-    }
-
-    public void setCartId(int cartId) {
-        this.cartId = cartId;
-    }
 
     @Override
     public boolean equals(Object o) {
