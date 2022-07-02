@@ -36,8 +36,15 @@ public class Products {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "linkImage")
-    private String linkImage;
+    @Column(name = "linkImage1")
+    private String linkImage1;
+
+    @Column(name = "linkImage2")
+    private String linkImage2;
+
+    @Column(name = "linkImage3")
+    private String linkImage3;
+
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
@@ -61,7 +68,6 @@ public class Products {
                 ", status=" + status +
                 ", price=" + price +
                 ", description='" + description + '\'' +
-                ", linkImage='" + linkImage + '\'' +
                 ", user=" + user +
                 ", listCart=" + listCart +
                 '}';
