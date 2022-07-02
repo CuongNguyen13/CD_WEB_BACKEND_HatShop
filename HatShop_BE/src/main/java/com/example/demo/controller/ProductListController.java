@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.ProductDTO;
 import com.example.demo.entity.Products;
 import com.example.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +18,8 @@ public class ProductListController {
     }
 
     @GetMapping(value = "/detailProduct/{id}")
-    public ProductDTO detailProduct(@PathVariable(name="id") int id) {
-        System.err.println(id);
-        ProductDTO dto = productService.getProductDetail(id);
-        System.err.println(dto.toString());
-        return dto;
+    public Products detailProduct(@PathVariable(name="id") int id) {
+        return productService.getProduct(id);
     }
 
 

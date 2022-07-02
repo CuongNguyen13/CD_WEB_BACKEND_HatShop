@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.ProductDTO;
+
 import com.example.demo.entity.Products;
 import com.example.demo.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,17 +23,8 @@ public class ProductService {
     public List<Products> findByName(String name){
         return productRepository.findByNameContainingIgnoreCase(name);
     }
-    public ProductDTO getProductDetail(int id){
-        Products products=  productRepository.findById(id);
-          ProductDTO dto = new ProductDTO();
-          dto.setName(products.getName());
-          dto.setDecription(products.getDescription());
-          dto.setPrice(products.getPrice());
-          dto.setKind(products.getKind());
-          return dto;
-    }
     public Products getProduct(int id){
-        return productRepository.findById(id);
+        return productRepository.findByIdAndStatus(id,"true");
     }
 
 
