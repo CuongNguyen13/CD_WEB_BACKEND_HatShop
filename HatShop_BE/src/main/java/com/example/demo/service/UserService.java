@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     private User user ;
     @Autowired
-    UserRepository userRepository;
+    static UserRepository userRepository;
     @Autowired
     ConvertUser convertUser;
     @Autowired
@@ -78,5 +78,4 @@ public class UserService {
         }
         return false ;
     }
-
 }

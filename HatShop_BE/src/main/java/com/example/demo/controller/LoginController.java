@@ -30,6 +30,9 @@ public class LoginController {
         session.setAttribute("user", userService.findByEmail(email));
         User user = (User) session.getAttribute("user");
         System.out.println("user : " + user.getListRole());
+
+        User u = userService.findByEmail(email);
+        System.out.println("user : " + u.getListRole());
         return new ModelAndView("redirect:/forgetpass", model);
     }
 

@@ -8,8 +8,6 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Getter
-@Setter
 @Table(name = "contacts")
 public class Contact {
     @Id

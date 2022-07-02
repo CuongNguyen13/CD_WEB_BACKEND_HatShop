@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
 @Table(name = "role")
 public class Role {
     @Id
@@ -25,7 +23,6 @@ public class Role {
     @ManyToMany(mappedBy = "listRole")
     private List<User> listUser = new ArrayList<>();
     public Role() {
-
     }
 
     @Override
@@ -35,6 +32,30 @@ public class Role {
                 ", roleName='" + roleName + '\'' +
                 ", listUser=" + listUser +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public List<User> getListUser() {
+        return listUser;
+    }
+
+    public void setListUser(List<User> listUser) {
+        this.listUser = listUser;
     }
 
 }

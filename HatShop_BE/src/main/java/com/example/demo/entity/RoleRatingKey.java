@@ -8,8 +8,6 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Getter
-@Setter
 @Embeddable
 public class RoleRatingKey implements Serializable {
     @Column(name = "user_id")

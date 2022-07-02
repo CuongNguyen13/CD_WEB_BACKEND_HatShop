@@ -7,8 +7,6 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Getter
-@Setter
 @Table(name = "pruducstCouse")
 public class PruducstCouse {
     @EmbeddedId

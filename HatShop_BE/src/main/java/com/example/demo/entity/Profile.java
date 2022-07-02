@@ -8,8 +8,6 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "profile")
-@Getter
-@Setter
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
