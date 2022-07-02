@@ -26,11 +26,6 @@ public class ProductListController {
         return dto;
     }
 
-    @GetMapping(value = "/detailProduct1/{id}")
-    public Products detailProduct1(@PathVariable(name="id") int id) {
-
-        return productService.getProduct(id);
-    }
 
 
 }
