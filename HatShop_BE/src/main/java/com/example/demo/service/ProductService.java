@@ -17,15 +17,23 @@ public class ProductService {
     public List<Products> getAllASC(String field) {
         return productRepository.findAll(Sort.by(Sort.Direction.ASC, field));
     }
+
     public List<Products> findAll() {
         return productRepository.findAll();
     }
-    public List<Products> findByName(String name){
+
+    public List<Products> findByName(String name) {
         return productRepository.findByNameContainingIgnoreCase(name);
     }
-    public Products getProduct(int id){
-        return productRepository.findByIdAndStatus(id,"true");
+
+    public Products getProduct(int id) {
+        return productRepository.findByIdAndStatus(id, "true");
     }
 
+    public List<Products> findByStatusTrue() {
+        return productRepository.findByStatusTrue();
+    }
+
+    ;
 
 }

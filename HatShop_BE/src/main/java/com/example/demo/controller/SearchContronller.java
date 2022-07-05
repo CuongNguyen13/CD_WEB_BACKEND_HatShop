@@ -27,4 +27,12 @@ public class SearchContronller {
         ModelAndView mav = new ModelAndView("index");
         return mav;
     }
+
+    @RequestMapping(value = "/status")
+    public ModelAndView status() {
+        ModelAndView mav = new ModelAndView("search");
+        List<Products> listByName = productService.findByStatusTrue();
+        mav.addObject("listByName", listByName);
+        return mav;
+    }
 }
