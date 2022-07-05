@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.User;
+import com.example.demo.model.UserModeNamePass;
+import com.example.demo.model.UserModel;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
@@ -36,29 +38,18 @@ public class LoginController {
 
 
 //    @PostMapping(value = "/login1")
-//    public String login1(@RequestParam User user) String password,
-//                              HttpSession session) {
-//
-//        if (!userService.login(email, password)) {
-//
-//            return "fail";
-//        }
-////        session.setAttribute("user", userService.findByEmail(email));
-////        User user = (User) session.getAttribute("user");
-////
-////
-////        System.out.println("user : " + user.getListRole());
-//        if (admin= true) return "successAdmin";
-//        User u = userService.findByEmail(email);
-//        System.out.println("user : " + u.getListRole());
-//
-//        return "success";
-//    }
+@PostMapping("/cc")
+    public String login1(@RequestBody UserModeNamePass user) {
+        if (!userService.login(user.getEmail(), user.getPass())) {
+            return "fail";
+        }
+        return "success";
+    }
 
 
-    @RequestMapping(value = {"/" , "/login"} , method = RequestMethod.GET)
+    @RequestMapping(value = {"/"})
     public ModelAndView loginPage(ModelMap model){
-        return new ModelAndView("login" , model);
+        return new ModelAndView("index" , model);
     }
 
 }

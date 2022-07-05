@@ -17,6 +17,9 @@ public class Contact {
     @Column(name = "id")
     private int id;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "content")
     private String content;
 
@@ -25,10 +28,6 @@ public class Contact {
 
     @Column(name = "title")
     private String title;
-    @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User user;
 
     public Contact() {
     }
