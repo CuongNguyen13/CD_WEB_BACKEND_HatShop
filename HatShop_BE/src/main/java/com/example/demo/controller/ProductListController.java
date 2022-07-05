@@ -12,7 +12,7 @@ public class ProductListController {
     @Autowired
     ProductService productService;
 
-    @PostMapping(value = "/sort")
+    @GetMapping(value = "/sort")
     public List<Products> sort(@RequestParam(name="field") String field) {
       return  productService.getAllASC(field);
     }
