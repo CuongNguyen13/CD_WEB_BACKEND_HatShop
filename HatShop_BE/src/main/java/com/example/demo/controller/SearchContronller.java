@@ -29,10 +29,8 @@ public class SearchContronller {
     }
 
     @RequestMapping(value = "/status")
-    public ModelAndView status() {
-        ModelAndView mav = new ModelAndView("search");
+    public List<Products> status() {
         List<Products> listByName = productService.findByStatusTrue();
-        mav.addObject("listByName", listByName);
-        return mav;
+        return listByName;
     }
 }
