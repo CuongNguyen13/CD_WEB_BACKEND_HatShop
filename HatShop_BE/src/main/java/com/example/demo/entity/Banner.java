@@ -6,6 +6,8 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "banner")
 public class Banner {
     @Id
