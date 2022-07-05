@@ -27,7 +27,7 @@ public class ProductService {
     }
 
     public Products getProduct(int id) {
-        return productRepository.findByIdAndStatus(id, "true");
+        return productRepository.findByIdAndStatusTrue(id);
     }
 
     public List<Products> findByStatusTrue() {
