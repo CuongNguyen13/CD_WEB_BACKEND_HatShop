@@ -32,4 +32,14 @@ public class Contact {
     public Contact() {
     }
 
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", content='" + content + '\'' +
+                ", dateSend=" + dateSend +
+                ", title='" + title + '\'' +
+                '}';
+    }
 }
