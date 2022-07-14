@@ -30,19 +30,17 @@ public class ProductService {
     public Products getProduct(int id) {
         return productRepository.findByIdAndStatusTrue(id);
     }
-
-    public List<Products> findByStatusTrue() {
+    public List<Products> findByStatusTrue(){
         return productRepository.findByStatusTrue();
     }
-
-    public ProductDTO getProductDetail(int id) {
-        Products products = productRepository.findById(id);
-        ProductDTO dto = new ProductDTO();
-        dto.setName(products.getName());
-        dto.setDecription(products.getDescription());
-        dto.setPrice(products.getPrice());
-        dto.setKind(products.getKind());
-        return dto;
+    public ProductDTO getProductDetail(int id){
+        Products products=  productRepository.findById(id);
+          ProductDTO dto = new ProductDTO();
+          dto.setName(products.getName());
+          dto.setDecription(products.getDescription());
+          dto.setPrice(products.getPrice());
+          dto.setKind(products.getKind());
+          return dto;
     }
 
 }

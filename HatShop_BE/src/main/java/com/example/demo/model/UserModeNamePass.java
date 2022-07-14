@@ -1,17 +1,13 @@
 package com.example.demo.model;
 
-import javax.validation.constraints.NotBlank;
-
 public class UserModeNamePass {
-    @NotBlank
     private String email;
-    @NotBlank
     private String pass;
 
     public UserModeNamePass() {
     }
 
-    public UserModeNamePass(@NotBlank String email, @NotBlank String pass) {
+    public UserModeNamePass(String email, String pass) {
         this.email = email;
         this.pass = pass;
     }

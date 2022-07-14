@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.User;
+import com.example.demo.model.UserModeNamePass;
 import com.example.demo.model.UserModel;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.UserRoleRepository;
@@ -13,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     private User user ;
     @Autowired
-    static UserRepository userRepository;
+    UserRepository userRepository;
     @Autowired
     ConvertUser convertUser;
     @Autowired
@@ -29,7 +30,17 @@ public class UserService {
     }
 
     public boolean login(String email, String pass) {
+        System.out.println("email = " + userRepository.findFirstByEmailAndPassword(email, pass));
         if (userRepository.findFirstByEmailAndPassword(email, pass) == null) return false;
+        return true;
+    }
+
+    public boolean login1(String email, String pass) {
+        System.out.println("CC = ");
+        User user = userRepository.findFirstByEmailAndPassword(email, pass);
+        if (user.equals(null)) return false;
+//        UserModeNamePass userModeNamePass = new UserModeNamePass(user.getEmail(), user.getPassword());
+//        System.out.println(user.toString());
         return true;
     }
 

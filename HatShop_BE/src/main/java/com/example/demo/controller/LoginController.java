@@ -36,11 +36,10 @@ public class LoginController {
     }
 
 
-
-//    @PostMapping(value = "/login1")
-@PostMapping("/cc")
+    //    @PostMapping(value = "/login1")
+    @PostMapping("/cc")
     public String login1(@RequestBody UserModeNamePass user) {
-        if (!userService.login(user.getEmail(), user.getPass())) {
+        if (!userService.login1(user.getEmail(), user.getPass())) {
             return "fail";
         }
         return "success";
@@ -48,8 +47,8 @@ public class LoginController {
 
 
     @RequestMapping(value = {"/"})
-    public ModelAndView loginPage(ModelMap model){
-        return new ModelAndView("index" , model);
+    public ModelAndView loginPage(ModelMap model) {
+        return new ModelAndView("login", model);
     }
 
 }
