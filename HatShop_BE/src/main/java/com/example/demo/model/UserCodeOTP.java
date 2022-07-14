@@ -1,26 +1,25 @@
 package com.example.demo.model;
 
-public class UserModeNamePass {
+public class UserCodeOTP {
     private String email;
     private String pass;
     private String message;
+    private String otp;
 
-    public UserModeNamePass() {
-    }
-
-    public UserModeNamePass(String message) {
-        this.message = message;
-    }
-
-    public UserModeNamePass(String email, String pass) {
-        this.email = email;
-        this.pass = pass;
-    }
-
-    public UserModeNamePass(String email, String pass, String message) {
+    public UserCodeOTP(String email, String pass, String message, String otp) {
         this.email = email;
         this.pass = pass;
         this.message = message;
+        this.otp = otp;
+    }
+
+    public UserCodeOTP(String email, String pass, String otp) {
+        this.email = email;
+        this.pass = pass;
+        this.otp = otp;
+    }
+
+    public UserCodeOTP() {
     }
 
     public String getEmail() {
@@ -47,12 +46,21 @@ public class UserModeNamePass {
         this.message = message;
     }
 
+    public String getOtp() {
+        return otp;
+    }
+
+    public void setOtp(String otp) {
+        this.otp = otp;
+    }
+
     @Override
     public String toString() {
-        return "UserModel{" +
+        return "UserCodeOTP{" +
                 "email='" + email + '\'' +
                 ", pass='" + pass + '\'' +
                 ", message='" + message + '\'' +
+                ", otp='" + otp + '\'' +
                 '}';
     }
 }

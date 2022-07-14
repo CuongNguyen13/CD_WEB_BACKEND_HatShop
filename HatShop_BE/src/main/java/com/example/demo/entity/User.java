@@ -50,6 +50,7 @@ public class User {
 
     @Column(name = "enable")
     private boolean enable;
+
     @JsonIgnore
     @ManyToMany
     @JoinTable(name = "userRole", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -182,6 +183,7 @@ public class User {
     public void setListBill(List<Bill> listBill) {
         this.listBill = listBill;
     }
+
 
     @JsonIgnore
     @OneToMany(mappedBy = "user")

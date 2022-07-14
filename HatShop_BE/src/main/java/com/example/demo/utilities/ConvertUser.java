@@ -27,7 +27,6 @@ public class ConvertUser {
         List<Role> roles = roleRepository.findByRoleName("USER");
 
         ArrayList<Role> listRole = new ArrayList<>();
-        System.out.println("roles = " + roles);
         listRole.add(roles.get(0));
         user.setListRole(listRole);
 

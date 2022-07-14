@@ -38,7 +38,7 @@ public class UserService {
     public boolean login1(String email, String pass) {
         System.out.println("CC = ");
         User user = userRepository.findFirstByEmailAndPassword(email, pass);
-        if (user.equals(null)) return false;
+        if (user == null) return false;
 //        UserModeNamePass userModeNamePass = new UserModeNamePass(user.getEmail(), user.getPassword());
 //        System.out.println(user.toString());
         return true;
@@ -48,6 +48,7 @@ public class UserService {
     public boolean saveUser(UserModel user){
         try{
             User u = convertUser.toEntity(user) ;
+            System.out.println("saveUser = " + u);
             userRepository.save(u);
         }catch (Exception e){
             return false ;
