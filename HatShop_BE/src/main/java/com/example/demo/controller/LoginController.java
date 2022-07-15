@@ -4,6 +4,7 @@ import com.example.demo.entity.User;
 import com.example.demo.model.UserModeNamePass;
 import com.example.demo.model.UserModel;
 import com.example.demo.service.UserService;
+import com.example.demo.utilities.ConvertUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -37,12 +38,12 @@ public class LoginController {
 
 
     //    @PostMapping(value = "/login1")
-    @PostMapping("/cc")
-    public String login1(@RequestBody UserModeNamePass user) {
+    @PostMapping("/login1")
+    public User login1(@RequestBody UserModeNamePass user) {
         if (!userService.login1(user.getEmail(), user.getPass())) {
-            return "fail";
+            return new User();
         }
-        return "success";
+        return userService.findByEmail(user.getEmail());
     }
 
     //trả vể user cho lưu sessionStorage bên front
