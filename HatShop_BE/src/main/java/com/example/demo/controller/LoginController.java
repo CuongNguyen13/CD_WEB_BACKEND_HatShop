@@ -45,6 +45,11 @@ public class LoginController {
         return "success";
     }
 
+    //trả vể user cho lưu sessionStorage bên front
+//    @GetMapping("/login")
+//    public User(){
+//        return new user;
+//    }
 
     @RequestMapping(value = {"/"})
     public ModelAndView loginPage(ModelMap model) {
