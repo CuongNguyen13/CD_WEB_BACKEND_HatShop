@@ -29,4 +29,15 @@ public class ContactService {
         return contactRepository.findByStatus(1,Sort.by(Sort.Direction.ASC,"dateSend"));
     }
 
+        //update status
+    public boolean updateStatus(int id, int status){
+        try {
+         Contact contact =    contactRepository.findById(id);
+         contact.setStatus(status);
+         contactRepository.save(contact);
+            return true;
+        }catch (Exception e){
+            return  false;
+        }
+    }
 }
