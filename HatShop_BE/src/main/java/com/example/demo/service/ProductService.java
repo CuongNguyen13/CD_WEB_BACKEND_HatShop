@@ -43,4 +43,8 @@ public class ProductService {
           return dto;
     }
 
+    public Products finnById(int id){
+        return productRepository.findById(id);
+    }
+
 }

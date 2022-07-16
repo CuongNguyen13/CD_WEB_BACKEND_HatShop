@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -107,5 +108,9 @@ public class ProductDTO {
                 ", linkImage='" + linkImage + '\'' +
                 ", kind=" + kind +
                 '}';
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

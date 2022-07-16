@@ -160,7 +160,9 @@ public class Products {
     public void setListCart(List<Cart> listCart) {
         this.listCart = listCart;
     }
-
+    public void add(){
+        this.setQuantity(this.quantity+1);
+    }
     @Override
     public String toString() {
         return "Products{" +

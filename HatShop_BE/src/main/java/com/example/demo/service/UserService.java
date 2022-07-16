@@ -23,7 +23,7 @@ public class UserService {
     public User findByEmail(String email) {
         return userRepository.findFirstByEmail(email);
     }
-
+    public User findById(int id) {return userRepository.findById(id);}
     public boolean isExistEmail(String email) {
         if (findByEmail(email) == null) return false;
         return true;
@@ -90,4 +90,5 @@ public class UserService {
         }
         return false ;
     }
+
 }
