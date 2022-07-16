@@ -51,6 +51,9 @@ public class User {
     @Column(name = "enable")
     private boolean enable;
 
+    @Column(name = "Role")
+    private boolean role;
+
     @JsonIgnore
     @ManyToMany
     @JoinTable(name = "userRole", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -184,6 +187,13 @@ public class User {
         this.listBill = listBill;
     }
 
+    public boolean isRole() {
+        return role;
+    }
+
+    public void setRole(boolean role) {
+        this.role = role;
+    }
 
     @JsonIgnore
     @OneToMany(mappedBy = "user")

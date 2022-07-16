@@ -30,6 +30,7 @@ public class ConvertUser {
         listRole.add(roles.get(0));
         user.setListRole(listRole);
 
+        user.setRole(false);
         user.setEmail(model.getEmail());
 
         user.setPassword(model.getPass());
