@@ -38,7 +38,7 @@ public class LoginController {
 
 
     //    @PostMapping(value = "/login1")
-    @PostMapping("/login1")
+    @PostMapping("/cc")
     public User login1(@RequestBody UserModeNamePass user) {
         if (!userService.login1(user.getEmail(), user.getPass())) {
             return new User();

@@ -29,6 +29,10 @@ public class Contact {
     @Column(name = "title")
     private String title;
 
+    @Column(name = "status")
+    private int status;
+
+
     public Contact() {
     }
 
