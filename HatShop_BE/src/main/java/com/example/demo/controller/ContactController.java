@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.ContactUpdateDTO;
 import com.example.demo.entity.Contact;
 import com.example.demo.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +27,17 @@ public class ContactController {
 
     @GetMapping(value = "/admin/contact")
     public List<Contact> getListContact(){
-        return contactService.listContact("email");
+        return contactService.listContact("dateSend");
     }
 
+//    @GetMapping(value = "/updateContact")
+//    public boolean updateDateContact(@RequestBody int id,int status){
+//        return contactService.updateStatus(id,status);
+//    }
+    @PostMapping(value = "/admin/contact/update")
+    public boolean updateDateContact(@RequestBody ContactUpdateDTO contact){
 
-
+        return contactService.updateStatus(contact.getId(), contact.getStatus());
+    }
 
 }
