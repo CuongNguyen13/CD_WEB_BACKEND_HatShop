@@ -37,7 +37,7 @@ public class SendEmail {
         MimeMessage message = mailSender.createMimeMessage();
         try {
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            helper.setSubject("OTP Reset PassWord");
+            helper.setSubject("HatShop xin chào!!");
             helper.setFrom("haphamufc@gmail.com");
             helper.setTo(to);
             String content = contentContact;
