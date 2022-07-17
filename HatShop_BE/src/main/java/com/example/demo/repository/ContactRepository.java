@@ -14,6 +14,6 @@ public interface ContactRepository extends JpaRepository<Contact,Integer> {
 
     Contact findById(int id);
 
-    Page<Contact> findAll(Pageable paging);
+    Page<Contact> findByStatusTrue(Pageable paging);
 
 }

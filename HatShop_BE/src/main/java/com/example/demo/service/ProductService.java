@@ -60,7 +60,7 @@ public class ProductService {
     public ListPage<Products> findAllByPage(int page, int limit){
         ListPage<Products> resp = new ListPage<>();
         Pageable paging = PageRequest.of(page - 1,limit);
-        Page<Products> pageData = productRepository.findAll(paging);
+        Page<Products> pageData = productRepository.findByStatusTrue(paging);
 
         resp.setList(pageData.getContent());
         resp.setCurrentPage(pageData.getNumber()+1);
@@ -72,4 +72,14 @@ public class ProductService {
     }
 
 
+    public boolean updateStatusProduct(int id,boolean status) {
+        try{
+            Products products = productRepository.findById(id);
+            products.setStatus(status);
+            productRepository.save(products);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
 }

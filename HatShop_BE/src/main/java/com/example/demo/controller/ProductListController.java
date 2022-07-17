@@ -41,5 +41,10 @@ public class ProductListController {
         return productService.findAllByPage(page,limit);
     }
 
+    @PostMapping("/admin/product/delete")
+    public boolean deleteProduct(@RequestBody int id){
+        return productService.updateStatusProduct(id,false);
+    }
+
 
 }
