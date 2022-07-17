@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.User;
 import com.example.demo.model.ObjectResponse;
 import com.example.demo.model.UserCodeOTP;
 import com.example.demo.model.UserModeNamePass;
@@ -92,7 +93,8 @@ public class ForgotpassController {
         if (!mailSender.sendEmail(user.getEmail(), otp.createOTP()) || !userService.updateCodeAndTimeResetPass(user.getEmail(), otp.getCode())) {
             return new UserModeNamePass("Vui lòng thử lại trong vài phút !");
         }
-        return new UserModeNamePass(user.getEmail(), user.getPass(), "Redirect OTP Page");
+        User user1 = userService.findByEmail(user.getEmail());
+        return new UserModeNamePass(user.getEmail(), user1.getPassword(), "Redirect OTP Page");
     }
 
     @PostMapping(value = "/sendOTP2")
