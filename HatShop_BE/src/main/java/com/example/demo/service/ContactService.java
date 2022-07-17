@@ -47,7 +47,7 @@ public class ContactService {
     public ListPage<Contact> findAll(int page, int limit){
         ListPage<Contact> resp = new ListPage<>();
         Pageable paging = PageRequest.of(page - 1,limit);
-        Page<Contact> pageData = contactRepository.findByStatusTrue(paging);
+        Page<Contact> pageData = contactRepository.findByStatus(1,paging);
 
         resp.setList(pageData.getContent());
         resp.setCurrentPage(pageData.getNumber()+1);
