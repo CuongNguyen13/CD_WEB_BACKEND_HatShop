@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -23,9 +24,8 @@ public class ContactController {
 
     @PostMapping(value = "/contact")
     public boolean contact(@RequestBody Contact contact){
-        Date date = new Date();
-
-        contact.setDateSend(new java.sql.Date(date.getYear(),date.getMonth(), date.getDay()));
+        LocalDate myObj = LocalDate.now();
+        contact.setDateSend(java.sql.Date.valueOf(myObj));
         contact.setStatus(1);
         return contactService.saveContact(contact);
     }
