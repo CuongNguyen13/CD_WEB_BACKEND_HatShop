@@ -48,12 +48,10 @@ public class ContactService {
         ListPage<Contact> resp = new ListPage<>();
         Pageable paging = PageRequest.of(page - 1,limit);
         Page<Contact> pageData = contactRepository.findByStatus(1,paging);
-
         resp.setList(pageData.getContent());
         resp.setCurrentPage(pageData.getNumber()+1);
         resp.setTotalItems((int)pageData.getTotalElements());
         resp.setTotalPages(pageData.getTotalPages());
-
         return resp;
 
     }
