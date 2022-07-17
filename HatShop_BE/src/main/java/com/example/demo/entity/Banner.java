@@ -16,7 +16,10 @@ public class Banner {
     private int id;
 
     @Column(name = "linkImage")
-    private String linkImage;
+    private String linkImage1;
+
+    @Column(name = "linkImage2")
+    private String linkImage2;
 
     @Column(name = "title")
     private String title;

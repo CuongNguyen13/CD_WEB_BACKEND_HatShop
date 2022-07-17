@@ -23,9 +23,6 @@ public class Profile {
     @Column(name = "age")
     private int age;
 
-    @Column(name = "dateOfBirth")
-    private Date dateOfBirth;
-
     @Column(name = "workplace")
     private String workplace;
 
