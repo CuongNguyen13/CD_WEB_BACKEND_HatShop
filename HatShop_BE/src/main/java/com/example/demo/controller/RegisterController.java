@@ -1,8 +1,6 @@
 package com.example.demo.controller;
-import com.example.demo.model.RegisterModel;
 import com.example.demo.model.UserModel;
 import com.example.demo.service.UserService;
-import com.example.demo.utilities.CreateDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -14,16 +12,14 @@ import javax.validation.Valid;
 @RestController
 public class RegisterController {
     @Autowired
-    CreateDate createDate ;
-    @Autowired
     UserService userService ;
 
     @RequestMapping(value = "/register")
     public ModelAndView register(@Valid @ModelAttribute(name = "user") UserModel user, BindingResult result, ModelMap model){
         if(result.hasErrors()){
-            model.addAttribute("listDay", createDate.createDays());
-            model.addAttribute("listMonth" , createDate.createMonths());
-            model.addAttribute("listYear", createDate.createYears());
+//            model.addAttribute("listDay", createDate.createDays());
+//            model.addAttribute("listMonth" , createDate.createMonths());
+//            model.addAttribute("listYear", createDate.createYears());
             return new ModelAndView("register", model) ;
         }
         else {
@@ -37,20 +33,19 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/register2")
-    public RegisterModel register2(@Valid @RequestBody UserModel user, BindingResult result){
-        RegisterModel dateModel = new RegisterModel(createDate.createDays(), createDate.createMonths(), createDate.createYears(), "Register failed");
+    public UserModel register2(@Valid @RequestBody UserModel user, BindingResult result){
         if(result.hasErrors()){
             System.out.println("No1");
-            return dateModel ;
+            return new UserModel();
         }
         else {
             if(userService.saveUser(user)){
                 System.out.println("Success = " + user);
-                return new RegisterModel("Register success") ;
+                return user ;
             }
         }
         System.out.println("No2");
-        return dateModel;
+        return new UserModel();
     }
 }
 

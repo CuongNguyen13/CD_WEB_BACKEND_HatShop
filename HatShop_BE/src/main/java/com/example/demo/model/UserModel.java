@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import javax.validation.constraints.NotBlank;
+import java.util.Date;
 
 public class UserModel {
     @NotBlank
@@ -15,28 +16,21 @@ public class UserModel {
     private String province;
     @NotBlank
     private String address;
-    @NotBlank
-    private String day;
-    @NotBlank
-    private String month;
-    @NotBlank
-    private String year;
+    private Date date;
 
 
     public UserModel() {
 
     }
 
-    public UserModel(@NotBlank String email, @NotBlank String pass, @NotBlank String fistName, @NotBlank String lastName, @NotBlank String province, @NotBlank String address, @NotBlank String day, @NotBlank String month, @NotBlank String year) {
+    public UserModel(@NotBlank String email, @NotBlank String pass, @NotBlank String fistName, @NotBlank String lastName, @NotBlank String province, @NotBlank String address, Date date) {
         this.email = email;
         this.pass = pass;
         this.fistName = fistName;
         this.lastName = lastName;
         this.province = province;
         this.address = address;
-        this.day = day;
-        this.month = month;
-        this.year = year;
+        this.date = date;
     }
 
     public String getEmail() {
@@ -87,28 +81,12 @@ public class UserModel {
         this.address = address;
     }
 
-    public String getDay() {
-        return day;
+    public Date getDate() {
+        return date;
     }
 
-    public void setDay(String day) {
-        this.day = day;
-    }
-
-    public String getMonth() {
-        return month;
-    }
-
-    public void setMonth(String month) {
-        this.month = month;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @Override
@@ -120,9 +98,7 @@ public class UserModel {
                 ", lastName='" + lastName + '\'' +
                 ", province='" + province + '\'' +
                 ", address='" + address + '\'' +
-                ", day='" + day + '\'' +
-                ", month='" + month + '\'' +
-                ", year='" + year + '\'' +
+                ", date='" + date + '\'' +
                 '}';
     }
 }
