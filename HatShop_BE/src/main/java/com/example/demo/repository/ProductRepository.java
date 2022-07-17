@@ -1,6 +1,9 @@
 package com.example.demo.repository;
 
+import com.example.demo.entity.Contact;
 import com.example.demo.entity.Products;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
@@ -13,4 +16,5 @@ public interface ProductRepository extends JpaRepository<Products, Integer> {
     Products findByIdAndStatusTrue(int id);
     Products findById(int id);
     List<Products> findByStatusTrue();
+    Page<Products> findAll(Pageable paging);
 }

@@ -1,8 +1,12 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.ListPage;
 import com.example.demo.entity.Contact;
 import com.example.demo.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +30,7 @@ public class ContactService {
     //danh sách contact sắp xếp theo ngày gửi
 
     public List<Contact> listContact(String fiel){
-        return contactRepository.findByStatus(1,Sort.by(Sort.Direction.ASC,"dateSend"));
+        return contactRepository.findByStatus(1,Sort.by(Sort.Direction.DESC,"dateSend"));
     }
 
         //update status
@@ -40,4 +44,19 @@ public class ContactService {
             return  false;
         }
     }
+    public ListPage<Contact> findAll(int page, int limit){
+        ListPage<Contact> resp = new ListPage<>();
+        Pageable paging = PageRequest.of(page - 1,limit);
+        Page<Contact> pageData = contactRepository.findAll(paging);
+
+        resp.setList(pageData.getContent());
+        resp.setCurrentPage(pageData.getNumber()+1);
+        resp.setTotalItems((int)pageData.getTotalElements());
+        resp.setTotalPages(pageData.getTotalPages());
+
+        return resp;
+
+    }
+
+
 }

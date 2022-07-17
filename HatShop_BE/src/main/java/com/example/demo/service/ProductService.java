@@ -1,10 +1,15 @@
 package com.example.demo.service;
 
 
+import com.example.demo.dto.ListPage;
 import com.example.demo.dto.ProductDTO;
+import com.example.demo.entity.Contact;
 import com.example.demo.entity.Products;
 import com.example.demo.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -46,5 +51,25 @@ public class ProductService {
     public Products finnById(int id){
         return productRepository.findById(id);
     }
+
+
+    public List<Products> listProduct(){
+        return productRepository.findAll();
+    }
+
+    public ListPage<Products> findAllByPage(int page, int limit){
+        ListPage<Products> resp = new ListPage<>();
+        Pageable paging = PageRequest.of(page - 1,limit);
+        Page<Products> pageData = productRepository.findAll(paging);
+
+        resp.setList(pageData.getContent());
+        resp.setCurrentPage(pageData.getNumber()+1);
+        resp.setTotalItems((int)pageData.getTotalElements());
+        resp.setTotalPages(pageData.getTotalPages());
+
+        return resp;
+
+    }
+
 
 }
