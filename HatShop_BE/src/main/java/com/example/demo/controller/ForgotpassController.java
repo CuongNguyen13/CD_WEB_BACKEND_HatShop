@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.User;
 import com.example.demo.model.ObjectResponse;
 import com.example.demo.model.UserCodeOTP;
 import com.example.demo.model.UserModeNamePass;
@@ -13,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 @RestController
 public class ForgotpassController {
     @Autowired
@@ -24,13 +22,6 @@ public class ForgotpassController {
     RenderOTP otp;
     @Autowired
     SendEmail sendEmail;
-
-    @RequestMapping(value = "/forgetpass", method = RequestMethod.GET)
-    public ModelAndView forgetPass(ModelMap model) {
-        return new ModelAndView("forgetpass", model);
-
-    }
-
     @RequestMapping(value = "/forgetpass", method = RequestMethod.POST)
     public ModelAndView forgetPass(ModelMap model,
                                    @RequestParam("email") String email,
@@ -45,12 +36,10 @@ public class ForgotpassController {
             model.addAttribute("sendMail", false);
             return new ModelAndView("forgetpass", model);
         }
-
         model.addAttribute("email", email);
         model.addAttribute("pass", pass);
         return new ModelAndView("OTP");
     }
-
     @RequestMapping(value = "/sendOTP", method = RequestMethod.POST)
     public ModelAndView pageOTP(ModelMap model, @RequestParam("email") String email,
                                 @RequestParam("pass") String pass, @RequestParam("otp") String otp) {
@@ -68,11 +57,9 @@ public class ForgotpassController {
         userService.updatePass(pass);
         return new ModelAndView("redirect:/login", model);
     }
-
     @RequestMapping(value = "/resetOTP", method = RequestMethod.GET)
 //    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ObjectResponse> resetOTP(@RequestParam("email") String email) {
-
         if (userService.validTimeCode(email)) return ResponseEntity.status(HttpStatus.OK)
                 .body(
                         new ObjectResponse("RUNNING", "")
@@ -82,8 +69,6 @@ public class ForgotpassController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(new ObjectResponse("SUCCESS", ""));
     }
-
-
     @PostMapping(value = "/forgetpass2")
     public UserModeNamePass forgetPass2(@RequestBody UserModeNamePass user
     ) {
@@ -93,8 +78,7 @@ public class ForgotpassController {
         if (!mailSender.sendEmail(user.getEmail(), otp.createOTP()) || !userService.updateCodeAndTimeResetPass(user.getEmail(), otp.getCode())) {
             return new UserModeNamePass("Vui lòng thử lại trong vài phút !");
         }
-        User user1 = userService.findByEmail(user.getEmail());
-        return new UserModeNamePass(user.getEmail(), user1.getPassword(), "Redirect OTP Page");
+        return new UserModeNamePass(user.getEmail(), user.getPass(), "Redirect OTP Page");
     }
 
     @PostMapping(value = "/sendOTP2")

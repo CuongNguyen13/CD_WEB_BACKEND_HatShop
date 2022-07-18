@@ -36,5 +36,12 @@ public class Profile {
     public Profile() {
     }
 
-
+    public Profile(String avatarlink, String name, int age, String workplace, String status, User user) {
+        this.avatarlink = avatarlink;
+        this.name = name;
+        this.age = age;
+        this.workplace = workplace;
+        this.status = status;
+        this.user = user;
+    }
 }

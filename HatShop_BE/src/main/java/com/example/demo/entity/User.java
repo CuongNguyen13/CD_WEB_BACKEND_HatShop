@@ -1,6 +1,5 @@
 package com.example.demo.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -54,10 +53,6 @@ public class User {
     @Column(name = "Role")
     private boolean role;
 
-
-    @ManyToMany
-    @JoinTable(name = "userRole", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Role> listRole;
 
     public int getId() {
         return id;
@@ -147,14 +142,6 @@ public class User {
         this.enable = enable;
     }
 
-    public List<Role> getListRole() {
-        return listRole;
-    }
-
-    public void setListRole(List<Role> listRole) {
-        this.listRole = listRole;
-    }
-
     public List<Cart> getListCart() {
         return listCart;
     }
@@ -226,7 +213,6 @@ public class User {
                 ", timeRecovery=" + timeRecovery +
                 ", enable=" + enable +
                 ", role=" + role +
-                ", listRole=" + listRole +
                 ", listCart=" + listCart +
                 ", listProduct=" + listProduct +
                 ", listPrepayment=" + listPrepayment +

@@ -1,10 +1,10 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.Profile;
 import com.example.demo.entity.User;
-import com.example.demo.model.UserModeNamePass;
 import com.example.demo.model.UserModel;
+import com.example.demo.repository.ProfileRepository;
 import com.example.demo.repository.UserRepository;
-import com.example.demo.repository.UserRoleRepository;
 import com.example.demo.utilities.ConvertUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class UserService {
     @Autowired
     ConvertUser convertUser;
     @Autowired
-    UserRoleRepository userRoleRepository;
+    ProfileRepository profileRepository;
 
     public User findByEmail(String email) {
         return userRepository.findFirstByEmail(email);
@@ -50,6 +50,8 @@ public class UserService {
             User u = convertUser.toEntity(user) ;
             System.out.println("saveUser = " + u);
             userRepository.save(u);
+            Profile profile = new Profile("", u.getFistName() + " " + u.getLastName(), 0, "", "Active", u);
+            profileRepository.save(profile);
         }catch (Exception e){
             return false ;
         }
