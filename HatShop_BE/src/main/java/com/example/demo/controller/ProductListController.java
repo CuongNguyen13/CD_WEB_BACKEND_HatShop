@@ -52,8 +52,8 @@ public class ProductListController {
     return  productService.addProduct(products);
     }
 
-    @GetMapping(value = "admin/product/checkname")
-    public boolean checkNameProduct(@RequestParam String name){
+    @PostMapping(value = "admin/product/checkname")
+    public boolean checkNameProduct(@RequestBody String name){
         return productService.checkNameProduct(name);
     }
 

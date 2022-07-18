@@ -103,7 +103,7 @@ public class ProductService {
 
 
     public boolean checkNameProduct(@RequestParam String name){
-        if (productRepository.findByName(name)!=null){
+        if (productRepository.findByName(name).size()>0){
             return false;
         }else {
             return  true;

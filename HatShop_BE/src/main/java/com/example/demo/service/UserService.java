@@ -1,12 +1,20 @@
 package com.example.demo.service;
 
+<<<<<<< Updated upstream
 import com.example.demo.entity.Profile;
+=======
+import com.example.demo.dto.ListPage;
+import com.example.demo.entity.Contact;
+>>>>>>> Stashed changes
 import com.example.demo.entity.User;
 import com.example.demo.model.UserModel;
 import com.example.demo.repository.ProfileRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.utilities.ConvertUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -92,5 +100,22 @@ public class UserService {
         }
         return false ;
     }
+
+
+
+
+
+    public ListPage<User> findAll(int page, int limit){
+        ListPage<User> resp = new ListPage<>();
+        Pageable paging = PageRequest.of(page - 1,limit);
+        Page<User> pageData = userRepository.findByEnable(1,paging);
+        resp.setList(pageData.getContent());
+        resp.setCurrentPage(pageData.getNumber()+1);
+        resp.setTotalItems((int)pageData.getTotalElements());
+        resp.setTotalPages(pageData.getTotalPages());
+        return resp;
+
+    }
+
 
 }
