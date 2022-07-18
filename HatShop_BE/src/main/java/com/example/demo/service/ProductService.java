@@ -13,6 +13,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -86,26 +89,27 @@ public class ProductService {
     }
 
 
-    public boolean addProduct(ProductDTO productDTO) {
+    public boolean addProduct(Products products) {
         try {
-            Products products = new Products();
             LocalDate myObj = LocalDate.now();
             products.setDate(java.sql.Date.valueOf(myObj));
             products.setStatus(true);
-            products.setKind(products.getKind());
-            products.setLinkImage1(products.getLinkImage1());
-            products.setLinkImage2(products.getLinkImage2());
-            products.setLinkImage3(products.getLinkImage3());
-            products.setPrice(productDTO.getPrice());
-            products.setDescription(productDTO.getDecription());
-            User user = new User();
-            user.setId(productDTO.getUserId());
-            products.setUser(user);
-            products.setQuantity(productDTO.getQuantity());
             productRepository.save(products);
             return true;
         }catch (Exception e){
             return false;
         }
     }
+
+
+    public boolean checkNameProduct(@RequestParam String name){
+        if (productRepository.findByName(name)!=null){
+            return false;
+        }else {
+            return  true;
+        }
+
+
+    }
+
 }

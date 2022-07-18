@@ -47,8 +47,14 @@ public class ProductListController {
     }
 
     @PostMapping("/admin/product/add")
-    public boolean addProduct(@RequestBody ProductDTO products){
-
+    public boolean addProduct(@RequestBody Products products){
+    System.err.println(products.toString());
     return  productService.addProduct(products);
     }
+
+    @GetMapping(value = "admin/product/checkname")
+    public boolean checkNameProduct(@RequestParam String name){
+        return productService.checkNameProduct(name);
+    }
+
 }

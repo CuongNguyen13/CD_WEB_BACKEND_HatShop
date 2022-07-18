@@ -45,7 +45,7 @@ public class Products {
     @Column(name = "linkImage3")
     private String linkImage3;
 
-    @JsonIgnore
+   
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;

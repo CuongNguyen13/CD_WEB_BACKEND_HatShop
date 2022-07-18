@@ -211,4 +211,26 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Bill> listBill = new ArrayList<>();
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", fistName='" + fistName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", province='" + province + '\'' +
+                ", address='" + address + '\'' +
+                ", codeRecovery='" + codeRecovery + '\'' +
+                ", timeRecovery=" + timeRecovery +
+                ", enable=" + enable +
+                ", role=" + role +
+                ", listRole=" + listRole +
+                ", listCart=" + listCart +
+                ", listProduct=" + listProduct +
+                ", listPrepayment=" + listPrepayment +
+                ", listBill=" + listBill +
+                '}';
+    }
 }
