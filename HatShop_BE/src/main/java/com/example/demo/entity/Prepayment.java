@@ -34,11 +34,11 @@ public class Prepayment {
 
     @Column(name = "phoneNumber")
     private int phoneNumber;
-    @JsonIgnore
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
-    @JsonIgnore
+
     @OneToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;

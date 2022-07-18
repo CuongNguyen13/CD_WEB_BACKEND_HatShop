@@ -24,11 +24,11 @@ public class Bill {
 
     @Column(name = "quantity")
     private int quantity;
-    @JsonIgnore
+
     @OneToOne
     @JoinColumn(name = "prepayment_id")
     private Prepayment prepayment;
-    @JsonIgnore
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;

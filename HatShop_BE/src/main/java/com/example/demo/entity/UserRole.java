@@ -13,12 +13,12 @@ import javax.persistence.*;
 public class UserRole {
     @EmbeddedId
     private RoleRatingKey id;
-    @JsonIgnore
+
     @ManyToOne
     @MapsId("user_id")
     @JoinColumn(name = "user_id")
     private User userId;
-    @JsonIgnore
+
     @ManyToOne
     @MapsId("role_id")
     @JoinColumn(name = "role_id")
