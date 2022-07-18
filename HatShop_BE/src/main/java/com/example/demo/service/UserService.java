@@ -1,11 +1,10 @@
 package com.example.demo.service;
 
-<<<<<<< Updated upstream
 import com.example.demo.entity.Profile;
-=======
+
 import com.example.demo.dto.ListPage;
 import com.example.demo.entity.Contact;
->>>>>>> Stashed changes
+
 import com.example.demo.entity.User;
 import com.example.demo.model.UserModel;
 import com.example.demo.repository.ProfileRepository;
