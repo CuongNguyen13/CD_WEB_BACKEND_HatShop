@@ -54,7 +54,7 @@ public class User {
     @Column(name = "Role")
     private boolean role;
 
-
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "userRole", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> listRole;
@@ -195,19 +195,19 @@ public class User {
         this.role = role;
     }
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Cart> listCart = new ArrayList<>();
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Products> listProduct = new ArrayList<>();
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Prepayment> listPrepayment = new ArrayList<>();
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Bill> listBill = new ArrayList<>();
 

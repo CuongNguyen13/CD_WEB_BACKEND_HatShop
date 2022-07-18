@@ -19,7 +19,7 @@ public class Role {
 
     @Column(name = "roleName")
     private String roleName;
-
+    @JsonIgnore
     @ManyToMany(mappedBy = "listRole")
     private List<User> listUser = new ArrayList<>();
     public Role() {
