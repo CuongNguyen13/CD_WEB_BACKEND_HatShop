@@ -5,6 +5,7 @@ import com.example.demo.dto.ListPage;
 import com.example.demo.dto.ProductDTO;
 import com.example.demo.entity.Contact;
 import com.example.demo.entity.Products;
+import com.example.demo.entity.User;
 import com.example.demo.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -76,6 +78,30 @@ public class ProductService {
         try{
             Products products = productRepository.findById(id);
             products.setStatus(status);
+            productRepository.save(products);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+
+    public boolean addProduct(ProductDTO productDTO) {
+        try {
+            Products products = new Products();
+            LocalDate myObj = LocalDate.now();
+            products.setDate(java.sql.Date.valueOf(myObj));
+            products.setStatus(true);
+            products.setKind(products.getKind());
+            products.setLinkImage1(products.getLinkImage1());
+            products.setLinkImage2(products.getLinkImage2());
+            products.setLinkImage3(products.getLinkImage3());
+            products.setPrice(productDTO.getPrice());
+            products.setDescription(productDTO.getDecription());
+            User user = new User();
+            user.setId(productDTO.getUserId());
+            products.setUser(user);
+            products.setQuantity(productDTO.getQuantity());
             productRepository.save(products);
             return true;
         }catch (Exception e){

@@ -46,5 +46,9 @@ public class ProductListController {
         return productService.updateStatusProduct(id,false);
     }
 
+    @PostMapping("/admin/product/add")
+    public boolean addProduct(@RequestBody ProductDTO products){
 
+    return  productService.addProduct(products);
+    }
 }

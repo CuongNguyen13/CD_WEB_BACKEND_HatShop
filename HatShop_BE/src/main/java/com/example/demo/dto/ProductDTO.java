@@ -23,6 +23,8 @@ public class ProductDTO {
     private String linkImage;
     private  int kind;
 
+    private int userId;
+
     public int getId() {
         return id;
     }
