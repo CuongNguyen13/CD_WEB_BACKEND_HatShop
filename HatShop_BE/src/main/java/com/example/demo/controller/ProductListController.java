@@ -32,7 +32,7 @@ public class ProductListController {
 //    }
 
     @GetMapping(value = "/detailProduct/{id}")
-    public ProductDTO detailProduct(@PathVariable(name="id") int id) {
+    public Products detailProduct(@PathVariable(name="id") int id) {
         return productService.getProductDetail(id);
     }
 
