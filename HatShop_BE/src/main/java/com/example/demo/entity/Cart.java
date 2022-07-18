@@ -24,7 +24,7 @@ public class Cart {
     @Column(name = "id")
     private int id;
 
-    @JsonIgnore
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
@@ -35,7 +35,7 @@ public class Cart {
     @Column(name = "totalPrice")
     private double totalPrice;
 
-    @JsonIgnore
+
     @ManyToMany(mappedBy = "listCart")
     private Map<String, Products> data = new HashMap<>();
 

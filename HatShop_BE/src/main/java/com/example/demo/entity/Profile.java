@@ -28,7 +28,7 @@ public class Profile {
 
     @Column(name = "status")
     private String status;
-    @JsonIgnore
+
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;

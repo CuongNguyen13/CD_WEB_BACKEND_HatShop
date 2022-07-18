@@ -53,13 +53,6 @@ public class User {
     @Column(name = "Role")
     private boolean role;
 
-<<<<<<< HEAD
-=======
-    @JsonIgnore
-    @ManyToMany
-    @JoinTable(name = "userRole", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Role> listRole;
->>>>>>> 6666e14a43598dbf3e2e26ba24b66aebd0a0f1d1
 
     public int getId() {
         return id;
@@ -189,19 +182,19 @@ public class User {
         this.role = role;
     }
 
-    @JsonIgnore
+
     @OneToMany(mappedBy = "user")
     private List<Cart> listCart = new ArrayList<>();
 
-    @JsonIgnore
+
     @OneToMany(mappedBy = "user")
     private List<Products> listProduct = new ArrayList<>();
 
-    @JsonIgnore
+
     @OneToMany(mappedBy = "user")
     private List<Prepayment> listPrepayment = new ArrayList<>();
 
-    @JsonIgnore
+
     @OneToMany(mappedBy = "user")
     private List<Bill> listBill = new ArrayList<>();
 

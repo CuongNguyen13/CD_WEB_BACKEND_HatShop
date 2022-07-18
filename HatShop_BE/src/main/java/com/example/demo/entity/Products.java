@@ -45,14 +45,14 @@ public class Products {
     @Column(name = "linkImage3")
     private String linkImage3;
 
-   
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
     @Column(name = "kind")
     private int kind;
-    @JsonIgnore
+
     @ManyToMany
     @JoinTable(name = "pruducstCouse", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "cart_id"))
     private List<Cart> listCart;
