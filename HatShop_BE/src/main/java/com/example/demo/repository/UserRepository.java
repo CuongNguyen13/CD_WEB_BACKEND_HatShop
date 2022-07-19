@@ -11,7 +11,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     User findFirstByEmailAndPassword(String email , String pass);
     User findById(int id);
 
-    Page<User> findByEnable(int enable, Pageable paging);
+    Page<User> findByRoleFalse(Pageable paging);
 
 
 

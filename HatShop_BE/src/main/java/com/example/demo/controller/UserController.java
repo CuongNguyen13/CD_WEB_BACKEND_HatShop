@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.ListPage;
+import com.example.demo.dto.UserDTO;
 import com.example.demo.entity.Products;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
@@ -18,13 +19,13 @@ public class UserController {
     @Autowired
     UserService userService;
 
-//    @GetMapping("/admin/user")
-//    public ListPage<User> getListContact(@RequestParam(name = "limit",required = false,defaultValue = "5") int limit, @RequestParam(name = "page",required = false,defaultValue = "1") int page){
-//        return userService.findAll(page,limit);
-//    }
-@GetMapping("/admin/user")
-public String getListContact(@RequestParam(name = "limit",required = false,defaultValue = "5") int limit, @RequestParam(name = "page",required = false,defaultValue = "1") int page){
-    return "123";
-}
+    @GetMapping("/admin/user")
+    public ListPage<UserDTO> getListContact(@RequestParam(name = "limit",required = false,defaultValue = "5") int limit, @RequestParam(name = "page",required = false,defaultValue = "1") int page){
+        return userService.findAll(page,limit);
+    }
+//@GetMapping("/admin/user")
+//public String getListContact(@RequestParam(name = "limit",required = false,defaultValue = "5") int limit, @RequestParam(name = "page",required = false,defaultValue = "1") int page){
+//    return "123";
+//}
 
 }

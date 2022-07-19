@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.UserDTO;
 import com.example.demo.entity.Profile;
 
 import com.example.demo.dto.ListPage;
@@ -16,6 +17,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -104,11 +108,32 @@ public class UserService {
 
 
 
-    public ListPage<User> findAll(int page, int limit){
-        ListPage<User> resp = new ListPage<>();
+    public ListPage<UserDTO> findAll(int page, int limit){
+        ListPage<UserDTO> resp = new ListPage<>();
         Pageable paging = PageRequest.of(page - 1,limit);
-        Page<User> pageData = userRepository.findByEnable(1,paging);
-        resp.setList(pageData.getContent());
+        Page<User> pageData = userRepository.findByRoleFalse(paging);
+        List<User> userList = pageData.getContent();
+        List<UserDTO> userDTOS = new ArrayList<>();
+
+        for (int i = 0; i < userList.size(); i++) {
+            UserDTO userDTO = new UserDTO();
+            userDTO.setId(userList.get(i).getId());
+            userDTO.setEmail(userList.get(i).getEmail());
+            userDTO.setProvince(userList.get(i).getProvince());
+            userDTO.setFirstName(userList.get(i).getFistName());
+            userDTO.setLastName(userList.get(i).getLastName());
+            userDTO.setEnable(userList.get(i).isEnable());
+            userDTO.setAddress(userList.get(i).getAddress());
+
+
+            userDTOS.add(userDTO);
+
+
+        }
+
+
+
+        resp.setList(userDTOS);
         resp.setCurrentPage(pageData.getNumber()+1);
         resp.setTotalItems((int)pageData.getTotalElements());
         resp.setTotalPages(pageData.getTotalPages());
