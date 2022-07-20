@@ -111,7 +111,7 @@ public class UserService {
     public ListPage<UserDTO> findAll(int page, int limit){
         ListPage<UserDTO> resp = new ListPage<>();
         Pageable paging = PageRequest.of(page - 1,limit);
-        Page<User> pageData = userRepository.findByRoleFalse(paging);
+        Page<User> pageData = userRepository.findByRoleFalse(paging );
         List<User> userList = pageData.getContent();
         List<UserDTO> userDTOS = new ArrayList<>();
 
@@ -124,15 +124,8 @@ public class UserService {
             userDTO.setLastName(userList.get(i).getLastName());
             userDTO.setEnable(userList.get(i).isEnable());
             userDTO.setAddress(userList.get(i).getAddress());
-
-
             userDTOS.add(userDTO);
-
-
         }
-
-
-
         resp.setList(userDTOS);
         resp.setCurrentPage(pageData.getNumber()+1);
         resp.setTotalItems((int)pageData.getTotalElements());
@@ -141,5 +134,20 @@ public class UserService {
 
     }
 
+    public boolean blockUser(int id){
+        try {
+            User user = userRepository.findById(id);
+            if (user.isEnable()){
+                user.setEnable(false);
+            }else {
+                user.setEnable(true);
+            }
+
+           userRepository.save(user);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
 
 }
