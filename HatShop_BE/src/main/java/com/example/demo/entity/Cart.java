@@ -37,13 +37,13 @@ public class Cart {
 
 
     @ManyToMany(mappedBy = "listCart")
-    private Map<String, Products> data = new HashMap<>();
+    private Map<Integer, Products> data = new HashMap<>();
 
 
     public Cart() {
     }
 
-    public Cart(User user, int quantity, double totalPrice, Map<String, Products> listProduct) {
+    public Cart(User user, int quantity, double totalPrice, Map<Integer, Products> listProduct) {
         this.user = user;
         this.quantity = quantity;
         this.totalPrice = totalPrice;
@@ -58,7 +58,7 @@ public class Cart {
             return;
         }
         pro.setQuantity(1);//set số lượng là 1
-        data.put(String.valueOf(pro.getId()), pro);
+        data.put(pro.getId(), pro);
     }
     public void update(String id, int quantity){
         if(quantity<0){
