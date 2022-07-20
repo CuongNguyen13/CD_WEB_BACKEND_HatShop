@@ -61,7 +61,7 @@ public class UserService {
             User u = convertUser.toEntity(user) ;
             System.out.println("saveUser = " + u);
             userRepository.save(u);
-            Profile profile = new Profile("", u.getFistName() + " " + u.getLastName(), 0, "", "Active", u);
+            Profile profile = new Profile("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmeiTXxwqD9kvG5zxeXL-CMt4uPjwYAEDl9Q&usqp=CAU", u.getFistName() + " " + u.getLastName(), 0, "", "Active", u);
             profileRepository.save(profile);
         }catch (Exception e){
             return false ;
