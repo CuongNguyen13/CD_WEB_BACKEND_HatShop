@@ -35,54 +35,21 @@ public class Cart {
     @Column(name = "totalPrice")
     private double totalPrice;
 
-
-    @ManyToMany(mappedBy = "listCart")
-    private Map<Integer, Products> data = new HashMap<>();
-
+    @Column (name = "product_id")
+    private int productId;
 
     public Cart() {
     }
 
-    public Cart(User user, int quantity, double totalPrice, Map<Integer, Products> listProduct) {
-        this.user = user;
-        this.quantity = quantity;
-        this.totalPrice = totalPrice;
-        this.data = listProduct;
-    }
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "id=" + id +
+                ", user=" + user +
+                ", quantity=" + quantity +
+                ", totalPrice=" + totalPrice +
 
-
-    public void put(Products pro){
-        if(pro==null) return;
-        if(data.containsKey(pro.getId())){
-            data.get(pro.getId()).add();//nếu sp tồn tại thì tăng lên
-            return;
-        }
-        pro.setQuantity(1);//set số lượng là 1
-        data.put(pro.getId(), pro);
-    }
-    public void update(String id, int quantity){
-        if(quantity<0){
-            return;
-        }
-        if(data.containsKey(id)){
-            data.get(id).setQuantity(quantity);
-        }
-    }
-    public void remove(String id){
-        data.remove(id);
-    }
-    public long total(){
-        long sum = 0;
-        for(Products pro : data.values()){
-            sum += pro.getPrice() + pro.getQuantity();
-        }
-        return  sum;
-    }
-
-    public static Cart getCart(Cart cart){
-        return cart==null ? new Cart() : cart;
-    }
-    public void commit(HttpSession session){
-        session.setAttribute("cart", this); //put ngược lại session
+                ", productId=" + productId +
+                '}';
     }
 }

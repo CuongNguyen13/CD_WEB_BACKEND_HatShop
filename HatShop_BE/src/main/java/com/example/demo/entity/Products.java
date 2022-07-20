@@ -53,9 +53,6 @@ public class Products {
     @Column(name = "kind")
     private int kind;
 
-    @ManyToMany
-    @JoinTable(name = "pruducstCouse", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "cart_id"))
-    private List<Cart> listCart;
 
     public int getId() {
         return id;
@@ -153,14 +150,7 @@ public class Products {
         this.kind = kind;
     }
 
-    public List<Cart> getListCart() {
-        return listCart;
-    }
-
-    public void setListCart(List<Cart> listCart) {
-        this.listCart = listCart;
-    }
-    public void add(){
+      public void add(){
         this.setQuantity(this.quantity+1);
     }
     @Override
@@ -174,7 +164,7 @@ public class Products {
                 ", price=" + price +
                 ", description='" + description + '\'' +
                 ", user=" + user +
-                ", listCart=" + listCart +
+
                 '}';
 
     }
