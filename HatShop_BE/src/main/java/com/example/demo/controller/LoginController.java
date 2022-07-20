@@ -44,11 +44,19 @@ public class LoginController {
         return userService.findByEmail(user.getEmail());
     }
 
-    //trả vể user cho lưu sessionStorage bên front
+//    trả vể user cho lưu sessionStorage bên front
 //    @GetMapping("/login")
 //    public User(){
 //        return new user;
 //    }
+    @PostMapping("/CheckExist")
+    public String checkExist(@RequestBody String email) {
+        if (userService.findByEmail(email) == null) {
+            System.out.println("user = " + userService.findByEmail(email));
+            return "User not exist";
+        }
+        return "User exist";
+    }
 
     @RequestMapping(value = {"/"})
     public ModelAndView loginPage(ModelMap model) {

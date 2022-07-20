@@ -26,15 +26,15 @@ public class ProductListController {
     }
 
 
-//    @GetMapping(value = "/detailProduct/{id}")
-//    public Products detailProduct(@PathVariable(name="id") int id) {
-//        return productService.getProduct(id);
-//    }
-
     @GetMapping(value = "/detailProduct/{id}")
     public Products detailProduct(@PathVariable(name="id") int id) {
-        return productService.getProductDetail(id);
+        return productService.getProduct(id);
     }
+//
+//    @GetMapping(value = "/detailProduct/{id}")
+//    public Products detailProduct(@PathVariable(name="id") int id) {
+//        return productService.getProductDetail(id);
+//    }
 
     @GetMapping("/admin/product")
     public ListPage<Products> getListContact(@RequestParam(name = "limit",required = false,defaultValue = "5") int limit, @RequestParam(name = "page",required = false,defaultValue = "1") int page){

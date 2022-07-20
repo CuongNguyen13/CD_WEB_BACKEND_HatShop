@@ -40,9 +40,9 @@ public class ProductService {
     public Products getProduct(int id) {
         return productRepository.findByIdAndStatusTrue(id);
     }
-    public List<Products> findByStatusTrue(){
-        return productRepository.findByStatusTrue();
-    }
+//    public List<Products> findByStatusTrue(){
+//        return productRepository.findByDateAndStatusTrue();
+//    }
     public Products getProductDetail(int id){
         Products products=  productRepository.findById(id);
           ProductDTO dto = new ProductDTO();
@@ -73,7 +73,6 @@ public class ProductService {
         resp.setTotalPages(pageData.getTotalPages());
 
         return resp;
-
     }
 
 

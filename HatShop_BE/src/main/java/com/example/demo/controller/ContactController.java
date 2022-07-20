@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 public class ContactController {
@@ -26,10 +27,10 @@ public class ContactController {
         return contactService.saveContact(contact);
     }
 
-//    @GetMapping(value = "/admin/contact")
-//    public List<Contact> getListContact(){
-//        return contactService.listContact("dateSend");
-//    }
+    @GetMapping(value = "/admin/contact")
+    public List<Contact> getListContact(){
+        return contactService.listContact("dateSend");
+    }
 
     @GetMapping("/admin/contact")
     public ListPage<Contact> getListContact(@RequestParam(name = "limit",required = false,defaultValue = "5") int limit, @RequestParam(name = "page",required = false,defaultValue = "1") int page){

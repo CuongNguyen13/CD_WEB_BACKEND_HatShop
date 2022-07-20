@@ -19,11 +19,11 @@ public class HomeController {
         return "Trang này là trang admin";
     }
 
-    @RequestMapping(value = "/status")
-    public ModelAndView statusTrue() {
-        ModelAndView mav = new ModelAndView("search");
-        List<Products> listByName = productService.findByStatusTrue();
-        mav.addObject("listByName", listByName);
-        return mav;
-    }
+//    @RequestMapping(value = "/status")
+//    public ModelAndView statusTrue() {
+//        ModelAndView mav = new ModelAndView("search");
+//        List<Products> listByName = productService.findByStatusTrue();
+//        mav.addObject("listByName", listByName);
+//        return mav;
+//    }
 }

@@ -1,12 +1,13 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -52,14 +53,6 @@ public class User {
 
     @Column(name = "Role")
     private boolean role;
-
-<<<<<<< HEAD
-=======
-    @JsonIgnore
-    @ManyToMany
-    @JoinTable(name = "userRole", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Role> listRole;
->>>>>>> 6666e14a43598dbf3e2e26ba24b66aebd0a0f1d1
 
     public int getId() {
         return id;
