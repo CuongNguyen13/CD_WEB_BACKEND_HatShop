@@ -41,9 +41,17 @@ public class CartService {
            }
 
         }else {
-            return  false;
-        }
+            try {
+                Cart cart = cartRepository.findByProductIdAndUserId(cartDTO.getProductId(), cartDTO.getUserId());
+                int quantity = cart.getQuantity() + cartDTO.getQuantity();
+                cart.setQuantity(quantity);
+                cartRepository.save(cart);
+                return  true;
+            } catch (Exception exception) {
+                return false;
+            }
 
+        }
     }
 
     public boolean checkExit(int idProduct,int idUser){
