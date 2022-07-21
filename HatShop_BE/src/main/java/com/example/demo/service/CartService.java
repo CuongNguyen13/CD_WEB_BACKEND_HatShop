@@ -1,12 +1,18 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.CartDTO;
+import com.example.demo.dto.CartProductDTO;
 import com.example.demo.entity.Cart;
+import com.example.demo.entity.Products;
 import com.example.demo.entity.User;
 import com.example.demo.repository.CartRepository;
+import com.example.demo.repository.ProductRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CartService {
@@ -15,15 +21,17 @@ public class CartService {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    ProductRepository productRepository;
     public boolean save(CartDTO cartDTO) {
-
-        if (!checkExit(cartDTO.getProductId(),cartDTO.getProductId())){
+        boolean check = checkExit(cartDTO.getProductId(),cartDTO.getUserId());
+        System.out.println(check);
+        if (check==false){
             Cart cart = new Cart();
             cart.setQuantity(cartDTO.getQuantity());
-            System.out.println(cartDTO.getUserId());
-            User user = userRepository.findById(cartDTO.getUserId());
-            System.err.println(user.toString());
-            cart.setUser(user);
+//            System.out.println(cartDTO.getUserId());
+//            User user = userRepository.findById(cartDTO.getUserId());
+            cart.setUserId(cartDTO.getUserId());
             cart.setProductId(cartDTO.getProductId());
            try {
                cartRepository.save(cart);
@@ -45,5 +53,27 @@ public class CartService {
 
     }
 
+    public List<CartProductDTO> listCart(int id){
+        List<Cart> cartList =  cartRepository.findByUserId(id);
+        List<CartProductDTO> cartProductDTOS = new ArrayList<>();
+
+        for (int i = 0; i <cartList.size(); i++) {
+            Products products = productRepository.findById(cartList.get(i).getProductId());
+            CartProductDTO cartProductDTO = new CartProductDTO();
+            cartProductDTO.setProducts(products);
+            cartProductDTO.setId(cartList.get(i).getId());
+            cartProductDTO.setQuantity(cartList.get(i).getQuantity());
+            cartProductDTOS.add(cartProductDTO);
+        }
+        return cartProductDTOS;
+    }
+    public boolean deleteItemCart(int id){
+        try {
+            cartRepository.deleteById(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
 
 }

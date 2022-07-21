@@ -142,13 +142,13 @@ public class User {
         this.enable = enable;
     }
 
-    public List<Cart> getListCart() {
-        return listCart;
-    }
-
-    public void setListCart(List<Cart> listCart) {
-        this.listCart = listCart;
-    }
+//    public List<Cart> getListCart() {
+//        return listCart;
+//    }
+//
+//    public void setListCart(List<Cart> listCart) {
+//        this.listCart = listCart;
+//    }
 
     public List<Products> getListProduct() {
         return listProduct;
@@ -183,9 +183,9 @@ public class User {
     }
 
 
-    @OneToMany(mappedBy = "user")
-    private List<Cart> listCart = new ArrayList<>();
-
+//    @ManyToMany(mappedBy = "user")
+//    private List<Cart> listCart = new ArrayList<>();
+//
 
     @OneToMany(mappedBy = "user")
     private List<Products> listProduct = new ArrayList<>();
@@ -198,25 +198,6 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Bill> listBill = new ArrayList<>();
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", fistName='" + fistName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", province='" + province + '\'' +
-                ", address='" + address + '\'' +
-                ", codeRecovery='" + codeRecovery + '\'' +
-                ", timeRecovery=" + timeRecovery +
-                ", enable=" + enable +
-                ", role=" + role +
-                ", listCart=" + listCart +
-                ", listProduct=" + listProduct +
-                ", listPrepayment=" + listPrepayment +
-                ", listBill=" + listBill +
-                '}';
-    }
+
+
 }

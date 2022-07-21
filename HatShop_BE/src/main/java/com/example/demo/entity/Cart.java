@@ -25,9 +25,9 @@ public class Cart {
     private int id;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+
     @JoinColumn(name = "user_id")
-    private User user;
+    private int userId;
 
     @Column(name = "quantity")
     private int quantity;
@@ -45,7 +45,7 @@ public class Cart {
     public String toString() {
         return "Cart{" +
                 "id=" + id +
-                ", user=" + user +
+                ", user=" + userId +
                 ", quantity=" + quantity +
                 ", totalPrice=" + totalPrice +
 
