@@ -33,9 +33,9 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public List<Products> findByName(String name) {
-        return productRepository.findByNameContainingIgnoreCase(name);
-    }
+//    public List<Products> findByName(String name) {
+//        return productRepository.findByNameContainingIgnoreCase(name);
+//    }
 
     public Products getProduct(int id) {
         return productRepository.findByIdAndStatusTrue(id);
@@ -108,8 +108,8 @@ public class ProductService {
         }else {
             return  true;
         }
-
-
     }
-
+    public List<Products> findByNameContainingIgnoreCaseAndStatusTrue(String name) {
+        return productRepository.findByNameContainingIgnoreCaseAndStatusTrue(name);
+    }
 }

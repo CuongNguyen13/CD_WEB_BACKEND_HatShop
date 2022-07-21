@@ -24,8 +24,6 @@ public class Cart {
     @Column(name = "id")
     private int id;
 
-
-
     @JoinColumn(name = "user_id")
     private int userId;
 
@@ -48,7 +46,6 @@ public class Cart {
                 ", user=" + userId +
                 ", quantity=" + quantity +
                 ", totalPrice=" + totalPrice +
-
                 ", productId=" + productId +
                 '}';
     }

@@ -18,7 +18,8 @@ public class UpdateDTO {
     public Profile SetProfile(Profile profile, ProfileDTO profileDTO) {
         profile.setAge(profileDTO.getAge());
         profile.setAvatarlink(profileDTO.getAvatarlink());
-        profile.setName(profileDTO.getLastName() + profileDTO.getLastName());
+        profile.setName(profileDTO.getLastName() + profileDTO.getFistName());
+        profile.setWorkplace(profileDTO.getWorkplace());
         return profile;
     }
 }

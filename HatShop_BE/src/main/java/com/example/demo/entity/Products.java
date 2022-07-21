@@ -5,8 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
+import java.sql.Date;
 
 @Entity
 @Getter
@@ -51,7 +50,7 @@ public class Products {
     private User user;
 
     @Column(name = "kind")
-    private int kind;
+    private String kind;
 
 
     public int getId() {
@@ -142,11 +141,11 @@ public class Products {
         this.user = user;
     }
 
-    public int getKind() {
+    public String getKind() {
         return kind;
     }
 
-    public void setKind(int kind) {
+    public void setKind(String kind) {
         this.kind = kind;
     }
 

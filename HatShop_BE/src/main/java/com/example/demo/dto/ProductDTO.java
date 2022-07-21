@@ -21,7 +21,7 @@ public class ProductDTO {
     private double price;
     private String decription;
     private String linkImage;
-    private  int kind;
+    private String kind;
 
     private int userId;
 
@@ -89,11 +89,11 @@ public class ProductDTO {
         this.linkImage = linkImage;
     }
 
-    public int getKind() {
+    public String getKind() {
         return kind;
     }
 
-    public void setKind(int kind) {
+    public void setKind(String kind) {
         this.kind = kind;
     }
 
