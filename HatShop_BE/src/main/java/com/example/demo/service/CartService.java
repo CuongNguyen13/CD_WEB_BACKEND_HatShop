@@ -83,5 +83,12 @@ public class CartService {
             return false;
         }
     }
-
+    public boolean checkEmpty(int id){
+        List<Cart> cartList = cartRepository.findByUserId(id);
+        if (cartList.size()>0){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
