@@ -60,7 +60,8 @@ public class ProductListController {
 
 
     @GetMapping("/product/kind")
-    public ListPage<Products> getListProductKind(@RequestParam(name = "limit",required = false,defaultValue = "5") int limit, @RequestParam(name = "page",required = false,defaultValue = "1") int page,String kind){
+    public ListPage<Products> getListProductKind(@RequestParam(name = "limit",required = false,defaultValue = "5") int limit, @RequestParam(name = "page",required = false,defaultValue = "1") int page,@RequestParam(name="kind") String kind){
+        System.out.println("kind:"+kind);
         return productService.findAllByKind(page,limit,kind);
     }
 

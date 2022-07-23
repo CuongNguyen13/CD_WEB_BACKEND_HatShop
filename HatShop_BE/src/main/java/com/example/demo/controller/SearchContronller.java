@@ -15,7 +15,7 @@ public class SearchContronller {
     ProductService productService;
 
     @GetMapping(value = "/searchNoFilter")
-    public  List<Products> searchNoFilter(@RequestParam(name="name") String name) {
+    public  List<Products> searchNoFilter(@RequestParam String name) {
         System.err.println(name);
         return productService.findByNameContainingIgnoreCaseAndStatusTrue(name);
     }

@@ -40,9 +40,8 @@ public class Prepayment {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany
     @JoinColumn(name = "cart_id")
-    private List<Cart> listCart;
+    private int cartId;
 
     public Prepayment() {
     }
