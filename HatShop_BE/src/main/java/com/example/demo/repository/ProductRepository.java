@@ -1,13 +1,12 @@
 package com.example.demo.repository;
 
-import com.example.demo.entity.Contact;
 import com.example.demo.entity.Products;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.query.Param;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Products, Integer> {
@@ -20,5 +19,10 @@ public interface ProductRepository extends JpaRepository<Products, Integer> {
 
     List<Products> findByName(String name);
 
+    List<Products> findByDateBetween(Date startDate, Date endDate);
+
+    List<Products> findByPriceBetween(double biginPrice, double endPrice);
+
+    List<Products> findByNameContainingIgnoreCaseAndStatusTrueAndDateBetweenAndPriceBetweenAndKind(String name, Date startDate, Date endDate, double biginPrice, double endPrice, String kind);
 
 }

@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.SearchDTO;
 import com.example.demo.entity.Products;
 import com.example.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,17 @@ public class SearchContronller {
     @Autowired
     ProductService productService;
 
-    @PostMapping(value = "/searchNoFilter")
+    @GetMapping(value = "/searchNoFilter")
     public  List<Products> searchNoFilter(@RequestParam(name="name") String name) {
+        System.err.println(name);
         return productService.findByNameContainingIgnoreCaseAndStatusTrue(name);
+    }
+
+    @GetMapping(value = "/search")
+    public  List<Products> search(@RequestBody SearchDTO searchDTO) {
+        System.err.println(searchDTO);
+        System.out.println("searchDTO = " + productService.findByAllFill(searchDTO.getName(), searchDTO.getBiginDate(), searchDTO.getEndate(), searchDTO.getBeginPrice(), searchDTO.getEndPrice(), searchDTO.getKind()));
+        return productService.findByAllFill(searchDTO.getName(), searchDTO.getBiginDate(), searchDTO.getEndate(), searchDTO.getBeginPrice(), searchDTO.getEndPrice(), searchDTO.getKind());
     }
 
 //    @RequestMapping(value = "/index")

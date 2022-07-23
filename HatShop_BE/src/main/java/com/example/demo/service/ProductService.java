@@ -3,9 +3,7 @@ package com.example.demo.service;
 
 import com.example.demo.dto.ListPage;
 import com.example.demo.dto.ProductDTO;
-import com.example.demo.entity.Contact;
 import com.example.demo.entity.Products;
-import com.example.demo.entity.User;
 import com.example.demo.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,10 +11,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.xml.crypto.Data;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -111,5 +109,17 @@ public class ProductService {
     }
     public List<Products> findByNameContainingIgnoreCaseAndStatusTrue(String name) {
         return productRepository.findByNameContainingIgnoreCaseAndStatusTrue(name);
+    }
+
+    public List<Products> findByDate(Date start, Date end) {
+        return productRepository.findByDateBetween(start, end);
+    }
+
+    public List<Products> findByPrice(double start, double end) {
+        return productRepository.findByPriceBetween(start, end);
+    }
+
+    public List<Products> findByAllFill(String name,Date startDate, Date endDate, double start, double end, String kind) {
+        return productRepository.findByNameContainingIgnoreCaseAndStatusTrueAndDateBetweenAndPriceBetweenAndKind(name, startDate, endDate, start, end, kind);
     }
 }
