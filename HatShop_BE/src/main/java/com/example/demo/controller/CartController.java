@@ -33,6 +33,10 @@ public class CartController {
     public boolean deleteCart(@RequestParam int id){
         return cartService.deleteItemCart(id);
     }
-
+    
+    @GetMapping("cart/checkEmpty")
+    public boolean checkEmpty(@RequestParam int id){
+        return cartService.checkEmpty(id);
+    }
 
 }
