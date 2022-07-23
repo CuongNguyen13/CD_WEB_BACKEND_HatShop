@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "prepayments")
@@ -39,9 +40,9 @@ public class Prepayment {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne
+    @OneToMany
     @JoinColumn(name = "cart_id")
-    private Cart cart;
+    private List<Cart> listCart;
 
     public Prepayment() {
     }

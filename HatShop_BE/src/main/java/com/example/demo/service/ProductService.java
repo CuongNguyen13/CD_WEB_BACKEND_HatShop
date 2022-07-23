@@ -74,6 +74,19 @@ public class ProductService {
 
     }
 
+    public ListPage<Products> findAllByKind(int page, int limit,String kind){
+        ListPage<Products> resp = new ListPage<>();
+        Pageable paging = PageRequest.of(page - 1,limit);
+        Page<Products> pageData = productRepository.findByKindAndStatusTrue(kind,paging);
+
+        resp.setList(pageData.getContent());
+        resp.setCurrentPage(pageData.getNumber()+1);
+        resp.setTotalItems((int)pageData.getTotalElements());
+        resp.setTotalPages(pageData.getTotalPages());
+
+        return resp;
+
+    }
 
     public boolean updateStatusProduct(int id,boolean status) {
         try{

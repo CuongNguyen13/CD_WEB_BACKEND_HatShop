@@ -36,9 +36,9 @@ public class ProductListController {
         return productService.getProductDetail(id);
     }
 
-    @GetMapping("/admin/product")
+     @GetMapping("/admin/product")
     public ListPage<Products> getListContact(@RequestParam(name = "limit",required = false,defaultValue = "5") int limit, @RequestParam(name = "page",required = false,defaultValue = "1") int page){
-        return productService.findAllByPage(page,limit);
+       return productService.findAllByPage(page,limit);
     }
 
     @PostMapping("/admin/product/delete")
@@ -57,5 +57,12 @@ public class ProductListController {
         System.out.println("tên sản phảm:"+ name);
         return productService.checkNameProduct(name);
     }
+
+
+    @GetMapping("/product/kind")
+    public ListPage<Products> getListProductKind(@RequestParam(name = "limit",required = false,defaultValue = "5") int limit, @RequestParam(name = "page",required = false,defaultValue = "1") int page,String kind){
+        return productService.findAllByKind(page,limit,kind);
+    }
+
 
 }
