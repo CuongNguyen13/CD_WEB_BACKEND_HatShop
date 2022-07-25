@@ -41,7 +41,8 @@ public class Cart {
     @ManyToOne
     @JoinColumn(name = "prepayement_id")
     private Prepayment prepayment;
-
+    @Column(name = "status")
+    private boolean status;
 
 
     @Override

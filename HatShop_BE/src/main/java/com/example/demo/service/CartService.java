@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CartService {
@@ -32,6 +33,7 @@ public class CartService {
             cart.setQuantity(cartDTO.getQuantity());
             cart.setUserId(cartDTO.getUserId());
             cart.setProductId(cartDTO.getProductId());
+            cart.setStatus(true);
            try {
                cartRepository.save(cart);
                return true;
@@ -41,9 +43,10 @@ public class CartService {
 
         }else {
             try {
-                Cart cart = cartRepository.findByProductIdAndUserId(cartDTO.getProductId(), cartDTO.getUserId());
+                Cart cart = cartRepository.findByProductIdAndUserIdAndStatusTrue(cartDTO.getProductId(), cartDTO.getUserId());
                 int quantity = cart.getQuantity() + cartDTO.getQuantity();
                 cart.setQuantity(quantity);
+                cart.setStatus(true);
                 cartRepository.save(cart);
                 return  true;
             } catch (Exception exception) {
@@ -54,14 +57,14 @@ public class CartService {
     }
 
     public boolean checkExit(int idProduct,int idUser){
-        if (cartRepository.findByProductIdAndUserId(idProduct,idUser)!=null){
+        if (cartRepository.findByProductIdAndUserIdAndStatusTrue(idProduct,idUser)!=null){
             return true;
         }else return false;
 
     }
 
     public List<CartProductDTO> listCart(int id){
-        List<Cart> cartList =  cartRepository.findByUserId(id);
+        List<Cart> cartList =  cartRepository.findByUserIdAndStatusTrue(id);
         List<CartProductDTO> cartProductDTOS = new ArrayList<>();
 
         for (int i = 0; i <cartList.size(); i++) {
@@ -76,14 +79,16 @@ public class CartService {
     }
     public boolean deleteItemCart(int id){
         try {
-            cartRepository.deleteById(id);
+           Cart cart = cartRepository.findById(id);
+            cart.setStatus(false);
+            cartRepository.save(cart);
             return true;
         }catch (Exception e){
             return false;
         }
     }
     public boolean checkEmpty(int id){
-        List<Cart> cartList = cartRepository.findByUserId(id);
+        List<Cart> cartList = cartRepository.findByUserIdAndStatusTrue(id);
         if (cartList.size()>0){
             return true;
         }else {
