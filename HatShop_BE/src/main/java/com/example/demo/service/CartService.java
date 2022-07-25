@@ -3,9 +3,11 @@ package com.example.demo.service;
 import com.example.demo.dto.CartDTO;
 import com.example.demo.dto.CartProductDTO;
 import com.example.demo.entity.Cart;
+import com.example.demo.entity.Prepayment;
 import com.example.demo.entity.Products;
 import com.example.demo.entity.User;
 import com.example.demo.repository.CartRepository;
+import com.example.demo.repository.PrepaymentRespository;
 import com.example.demo.repository.ProductRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,19 +20,16 @@ import java.util.List;
 public class CartService {
     @Autowired
     CartRepository cartRepository;
-    @Autowired
-    UserRepository userRepository;
+
 
     @Autowired
     ProductRepository productRepository;
     public boolean save(CartDTO cartDTO) {
         boolean check = checkExit(cartDTO.getProductId(),cartDTO.getUserId());
-        System.out.println(check);
+
         if (check==false){
             Cart cart = new Cart();
             cart.setQuantity(cartDTO.getQuantity());
-//            System.out.println(cartDTO.getUserId());
-//            User user = userRepository.findById(cartDTO.getUserId());
             cart.setUserId(cartDTO.getUserId());
             cart.setProductId(cartDTO.getProductId());
            try {
