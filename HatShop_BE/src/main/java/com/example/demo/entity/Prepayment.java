@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -38,12 +39,20 @@ public class Prepayment {
     @Column(name = "phoneNumber")
     private int phoneNumber;
 
+    @Column(name = "date")
+    private Date date;
+
+    @Column(name = "status")
+    private boolean status;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany(mappedBy = "prepayment")
     private List<Cart> cartList;
+
+
     public Prepayment() {
     }
 
