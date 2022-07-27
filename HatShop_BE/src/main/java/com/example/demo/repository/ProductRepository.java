@@ -20,23 +20,14 @@ public interface ProductRepository extends JpaRepository<Products, Integer> {
 
     List<Products> findByName(String name);
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 7b8e193f36ef6f9f38ac88220bd188cfae811600
     List<Products> findByDateBetween(Date startDate, Date endDate);
 
     List<Products> findByPriceBetween(double biginPrice, double endPrice);
 
     List<Products> findByNameContainingIgnoreCaseAndStatusTrueAndDateBetweenAndPriceBetweenAndKind(String name, Date startDate, Date endDate, double biginPrice, double endPrice, String kind);
-<<<<<<< HEAD
-    Page<Products> findByKindAndStatusTrue(String kind,Pageable paging);
-
-=======
+//    Page<Products> findByKindAndStatusTrue(String kind,Pageable paging);
 
     Page<Products> findByKindAndStatusTrue(String kind,Pageable paging);
 
-
-
->>>>>>> 7b8e193f36ef6f9f38ac88220bd188cfae811600
 }
