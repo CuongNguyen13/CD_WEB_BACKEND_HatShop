@@ -80,8 +80,7 @@ public class CartService {
     public boolean deleteItemCart(int id){
         try {
            Cart cart = cartRepository.findById(id);
-            cart.setStatus(false);
-            cartRepository.save(cart);
+            cartRepository.delete(cart);
             return true;
         }catch (Exception e){
             return false;
