@@ -149,5 +149,13 @@ public class UserService {
             return false;
         }
     }
-
+        public UserDTO userPayment(int iduser){
+            User user = userRepository.findById(iduser);
+            UserDTO userDTO = new UserDTO();
+            userDTO.setAddress(user.getAddress());
+            userDTO.setEmail(user.getEmail());
+            userDTO.setFirstName(user.getFistName());
+            user.setLastName(user.getLastName());
+            return userDTO;
+        }
 }

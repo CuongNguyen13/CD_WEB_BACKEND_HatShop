@@ -26,4 +26,9 @@ public class UserController {
         return userService.blockUser(id);
     }
 
+    @GetMapping("/user/payment")
+    public  UserDTO userPayment(@RequestParam int id){
+        return  userService.userPayment(id);
+    }
+
 }

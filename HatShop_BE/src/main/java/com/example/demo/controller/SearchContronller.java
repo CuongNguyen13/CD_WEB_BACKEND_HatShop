@@ -15,7 +15,11 @@ public class SearchContronller {
     ProductService productService;
 
     @GetMapping(value = "/searchNoFilter")
+<<<<<<< HEAD
     public List<Products> searchNoFilter(@RequestParam(name = "name") String name) {
+=======
+    public  List<Products> searchNoFilter(@RequestParam String name) {
+>>>>>>> 7b8e193f36ef6f9f38ac88220bd188cfae811600
         System.err.println(name);
         if (name.trim().length() == 0)
             return null;

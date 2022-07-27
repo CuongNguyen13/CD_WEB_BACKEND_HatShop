@@ -8,6 +8,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "prepayments")
 public class Prepayment {
     @Id
@@ -40,10 +42,8 @@ public class Prepayment {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany
-    @JoinColumn(name = "cart_id")
-    private List<Cart> listCart;
-
+    @OneToMany(mappedBy = "prepayment")
+    private List<Cart> cartList;
     public Prepayment() {
     }
 

@@ -38,6 +38,12 @@ public class Cart {
 
     public Cart() {
     }
+    @ManyToOne
+    @JoinColumn(name = "prepayement_id")
+    private Prepayment prepayment;
+    @Column(name = "status")
+    private boolean status;
+
 
     @Override
     public String toString() {
