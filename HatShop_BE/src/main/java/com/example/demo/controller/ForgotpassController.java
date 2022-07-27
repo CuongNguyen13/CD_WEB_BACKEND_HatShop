@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 @RestController
 public class ForgotpassController {
     @Autowired
@@ -22,6 +23,7 @@ public class ForgotpassController {
     RenderOTP otp;
     @Autowired
     SendEmail sendEmail;
+
     @RequestMapping(value = "/forgetpass", method = RequestMethod.POST)
     public ModelAndView forgetPass(ModelMap model,
                                    @RequestParam("email") String email,
@@ -40,6 +42,7 @@ public class ForgotpassController {
         model.addAttribute("pass", pass);
         return new ModelAndView("OTP");
     }
+
     @RequestMapping(value = "/sendOTP", method = RequestMethod.POST)
     public ModelAndView pageOTP(ModelMap model, @RequestParam("email") String email,
                                 @RequestParam("pass") String pass, @RequestParam("otp") String otp) {
@@ -57,6 +60,7 @@ public class ForgotpassController {
         userService.updatePass(pass);
         return new ModelAndView("redirect:/login", model);
     }
+
     @RequestMapping(value = "/resetOTP", method = RequestMethod.GET)
 //    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ObjectResponse> resetOTP(@RequestParam("email") String email) {
@@ -69,6 +73,7 @@ public class ForgotpassController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(new ObjectResponse("SUCCESS", ""));
     }
+
     @PostMapping(value = "/forgetpass2")
     public UserModeNamePass forgetPass2(@RequestBody UserModeNamePass user
     ) {
@@ -84,13 +89,14 @@ public class ForgotpassController {
     @PostMapping(value = "/sendOTP2")
     public UserCodeOTP pageOTP2(@RequestBody UserCodeOTP user) {
         if (!userService.validTimeCode(user.getEmail())) {
-            return new UserCodeOTP(user.getEmail(), user.getPass(), "Mã OTP đã quá hạn", user.getOtp());
+            return new UserCodeOTP(user.getEmail(), "Mã OTP đã quá hạn", user.getOtp1(), user.getOtp2(), user.getOtp3(), user.getOtp4(), user.getOtp5(), user.getOtp6());
         }
-        // user.getMessage() là otp
-        if (!userService.validCode(user.getOtp())) {
-            return new UserCodeOTP(user.getEmail(), user.getPass(), "Mã OTP không chính xác", user.getOtp());
+        String otp = "" + user.getOtp1() + user.getOtp2() + user.getOtp3() + user.getOtp4() + user.getOtp5() + user.getOtp6();
+        if (!userService.validCode(otp.trim())) {
+            System.out.println("otp = " + otp.trim());
+            return new UserCodeOTP(user.getEmail(), "Mã OTP không chính xác", user.getOtp1(), user.getOtp2(), user.getOtp3(), user.getOtp4(), user.getOtp5(), user.getOtp6());
         }
-        userService.updatePass(user.getPass());
-        return new UserCodeOTP(user.getEmail(), user.getPass(), "Update Password Success", user.getOtp());
+        userService.updatePass(user.getNewPass());
+        return new UserCodeOTP(user.getEmail(), "Update Password Success", user.getOtp1(), user.getOtp2(), user.getOtp3(), user.getOtp4(), user.getOtp5(), user.getOtp6());
     }
 }
