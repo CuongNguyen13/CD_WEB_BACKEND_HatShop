@@ -155,7 +155,7 @@ public class UserService {
             userDTO.setAddress(user.getAddress());
             userDTO.setEmail(user.getEmail());
             userDTO.setFirstName(user.getFistName());
-            user.setLastName(user.getLastName());
+            userDTO.setLastName(user.getLastName());
             return userDTO;
         }
 }

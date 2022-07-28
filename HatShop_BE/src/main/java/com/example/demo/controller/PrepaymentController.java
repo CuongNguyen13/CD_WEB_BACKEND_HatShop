@@ -1,21 +1,19 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.PrepaymentDTO;
 import com.example.demo.service.PrepaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PrepaymentController {
     @Autowired
     PrepaymentService prepaymentService;
 
-    @GetMapping("/prepayment/save")
-    public boolean save(@RequestParam int id){
-        return  prepaymentService.savePayment(id);
+    @PostMapping("/prepayment/save")
+    public boolean save(@RequestBody PrepaymentDTO prepaymentDTO){
+        return  prepaymentService.savePayment(prepaymentDTO);
     }
-
 
 
 
