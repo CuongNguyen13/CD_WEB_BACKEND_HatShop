@@ -18,7 +18,7 @@ public class CartController {
     }
     @PostMapping("cart/add")
     public boolean addCart(@RequestBody CartDTO cartDTO){
-        System.err.println(cartDTO);
+//        System.err.println(cartDTO.toString());
         return cartService.save(cartDTO);
     }
 
