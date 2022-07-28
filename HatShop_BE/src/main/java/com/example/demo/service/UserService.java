@@ -86,7 +86,7 @@ public class UserService {
         this.user.setPassword(pass);
         userRepository.save(user);
     }
-    public  boolean validTimeCode(String email){
+    public boolean validTimeCode(String email){
         User user = findByEmail(email);
         if(user==null) return  false ;
         this.user = user ;
