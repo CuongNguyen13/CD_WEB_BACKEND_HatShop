@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.BillDTO;
+import com.example.demo.dto.CartProductDTO;
 import com.example.demo.dto.PrepaymentDTO;
 import com.example.demo.entity.Cart;
 import com.example.demo.entity.Prepayment;
@@ -21,6 +23,9 @@ public class PrepaymentService {
     CartRepository cartRepository;
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    CartService cartService;
 
     public boolean savePayment(PrepaymentDTO prepaymentDTO){
         List<Cart> cartList = cartRepository.findByUserIdAndStatusTrue(prepaymentDTO.getUserId());
@@ -53,5 +58,22 @@ public class PrepaymentService {
 
             return false;
         }
+    }
+
+
+    public BillDTO billDTO(int id){
+        List<CartProductDTO> cartProductDTOList = cartService.listCartPayment(id);
+        Prepayment prepayment = prepaymentRespository.findById(id);
+        BillDTO billDTO = new BillDTO();
+        billDTO.setCart(cartProductDTOList);
+        billDTO.setAddress(prepayment.getAddress());
+        billDTO.setDate(prepayment.getDate());
+        billDTO.setDescription(prepayment.getDescription());
+        billDTO.setEmail(prepayment.getEmail());
+        billDTO.setName(prepayment.getName());
+        billDTO.setPhone(prepayment.getPhoneNumber());
+        billDTO.setId(prepayment.getId());
+        billDTO.setTotal(prepayment.getPrice());
+        return billDTO;
     }
 }

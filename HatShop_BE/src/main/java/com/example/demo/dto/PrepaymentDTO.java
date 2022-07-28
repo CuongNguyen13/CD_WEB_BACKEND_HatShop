@@ -10,7 +10,7 @@ import lombok.Setter;
 public class PrepaymentDTO {
     private int userId;
     private String name;
-    private int phone;
+    private String phone;
     private String address;
     private String description;
     private int total;

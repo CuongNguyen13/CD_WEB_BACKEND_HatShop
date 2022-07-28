@@ -94,4 +94,18 @@ public class CartService {
             return false;
         }
     }
+    public List<CartProductDTO> listCartPayment(int idPayment){
+        List<Cart> cartList =  cartRepository.findByPrepaymentId(idPayment);
+        List<CartProductDTO> cartProductDTOS = new ArrayList<>();
+
+        for (int i = 0; i <cartList.size(); i++) {
+            Products products = productRepository.findById(cartList.get(i).getProductId());
+            CartProductDTO cartProductDTO = new CartProductDTO();
+            cartProductDTO.setProducts(products);
+            cartProductDTO.setId(cartList.get(i).getId());
+            cartProductDTO.setQuantity(cartList.get(i).getQuantity());
+            cartProductDTOS.add(cartProductDTO);
+        }
+        return cartProductDTOS;
+    }
 }

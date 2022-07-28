@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PrepaymentRespository extends JpaRepository<Prepayment,Integer> {
 
+    Prepayment findById(int id);
 
 
 

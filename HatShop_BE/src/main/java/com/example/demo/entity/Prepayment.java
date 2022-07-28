@@ -37,7 +37,7 @@ public class Prepayment {
     private String description;
 
     @Column(name = "phoneNumber")
-    private int phoneNumber;
+    private String phoneNumber;
 
     @Column(name = "date")
     private Date date;
