@@ -99,4 +99,13 @@ public class ForgotpassController {
         userService.updatePass(user.getNewPass());
         return new UserCodeOTP(user.getEmail(), "Update Password Success", user.getOtp1(), user.getOtp2(), user.getOtp3(), user.getOtp4(), user.getOtp5(), user.getOtp6());
     }
+
+    @PostMapping(value = "/resetOTP2")
+//    @PreAuthorize("isAuthenticated()")
+    public String resetOTP2(@RequestParam("email") String email) {
+        if (userService.validTimeCode(email)) return "Đợi email hết thời gian cấp 2 phút";
+        sendEmail.sendEmail(email, otp.createOTP());
+        userService.updateCodeAndTimeResetPass(email, otp.getCode());
+        return "Gửi lại thành công hãy kiểm tra email";
+    }
 }
