@@ -27,7 +27,7 @@ public class PrepaymentService {
     @Autowired
     CartService cartService;
 
-    public boolean savePayment(PrepaymentDTO prepaymentDTO){
+    public String savePayment(PrepaymentDTO prepaymentDTO){
         List<Cart> cartList = cartRepository.findByUserIdAndStatusTrue(prepaymentDTO.getUserId());
         User user = userRepository.findById(prepaymentDTO.getUserId());
         try {
@@ -45,18 +45,18 @@ public class PrepaymentService {
             prepayment.setDate(java.sql.Date.valueOf(myObj));
             prepayment.setStatus(true);
 
-            prepaymentRespository.save(prepayment);
+           Prepayment pre = prepaymentRespository.save(prepayment);
             for (int i = 0; i < cartList.size(); i++) {
                 cartList.get(i).setStatus(false);
                 cartList.get(i).setPrepayment(prepayment);
                 cartRepository.save(cartList.get(i));
             }
-            return  true;
+            return  pre.getId()+"";
         }catch (Exception e){
 
 
 
-            return false;
+            return null;
         }
     }
 
@@ -74,6 +74,7 @@ public class PrepaymentService {
         billDTO.setPhone(prepayment.getPhoneNumber());
         billDTO.setId(prepayment.getId());
         billDTO.setTotal(prepayment.getPrice());
+        billDTO.setStatus(prepayment.isStatus());
         return billDTO;
     }
 }

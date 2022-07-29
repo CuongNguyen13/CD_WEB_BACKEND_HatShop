@@ -18,7 +18,7 @@ public class PrepaymentController {
 
 
     @PostMapping("/prepayment/save")
-    public boolean save(@RequestBody PrepaymentDTO prepaymentDTO){
+    public String save(@RequestBody PrepaymentDTO prepaymentDTO){
         return  prepaymentService.savePayment(prepaymentDTO);
     }
 

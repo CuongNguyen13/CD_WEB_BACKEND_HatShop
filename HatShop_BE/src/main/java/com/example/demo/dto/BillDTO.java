@@ -20,4 +20,5 @@ public class BillDTO {
     private Date date;
     private String address;
     private List<CartProductDTO> cart;
+    private boolean status;
 }
