@@ -133,6 +133,6 @@ public class ProductService {
     }
 
     public List<Products> findByAllFill(String name,Date startDate, Date endDate, double start, double end, String kind) {
-        return productRepository.findByNameContainingIgnoreCaseAndStatusTrueAndDateBetweenAndPriceBetweenAndKind(name, startDate, endDate, start, end, kind);
+        return productRepository.findByNameContainingIgnoreCaseAndStatusTrueAndDateBetweenAndPriceBetweenAndKindContainingIgnoreCase(name, startDate, endDate, start, end, kind);
     }
 }

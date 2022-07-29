@@ -15,14 +15,17 @@ public class SearchContronller {
     ProductService productService;
 
     @GetMapping(value = "/searchNoFilter")
-    public  List<Products> searchNoFilter(@RequestParam String name) {
-        System.err.println(name);
-        if (name.trim().length() == 0)
+    public List<Products> searchNoFilter(@RequestParam String name) {
+        System.err.println("name : " + name.trim());
+        if (name.trim().length() == 0) {
+            System.out.println("a = ");
             return null;
-        return productService.findByNameContainingIgnoreCaseAndStatusTrue(name);
+        } else {
+            return productService.findByNameContainingIgnoreCaseAndStatusTrue(name.trim());
+        }
     }
 
-    @GetMapping(value = "/search")
+    @PostMapping(value = "/search")
     public List<Products> search(@RequestBody SearchDTO searchDTO) {
         System.err.println(searchDTO);
         System.out.println("searchDTO = " + productService.findByAllFill(searchDTO.getName(), searchDTO.getBiginDate(), searchDTO.getEndate(), searchDTO.getBeginPrice(), searchDTO.getEndPrice(), searchDTO.getKind()));
