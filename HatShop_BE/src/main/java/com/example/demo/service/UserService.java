@@ -48,6 +48,7 @@ public class UserService {
 
     public boolean login1(String email, String pass) {
         System.out.println("CC = ");
+        System.out.println("user = " + userRepository.findFirstByEmailAndPassword(email, pass));
         User user = userRepository.findFirstByEmailAndPassword(email, pass);
         if (user == null) return false;
 //        UserModeNamePass userModeNamePass = new UserModeNamePass(user.getEmail(), user.getPassword());

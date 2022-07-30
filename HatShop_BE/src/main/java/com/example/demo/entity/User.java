@@ -198,6 +198,11 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Bill> listBill = new ArrayList<>();
 
-
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
