@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -13,6 +15,8 @@ public class PrepaymentDTO {
     private String phone;
     private String address;
     private String description;
-    private int total;
+    private double total;
     private String email;
+    private Date date;
+    private int status;
 }

@@ -52,6 +52,23 @@ public class Prepayment {
     @OneToMany(mappedBy = "prepayment")
     private List<Cart> cartList;
 
+    @Override
+    public String toString() {
+        return "Prepayment{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                ", description='" + description + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", date=" + date +
+                ", status=" + status +
+                ", user=" + user +
+                ", cartList=" + cartList +
+                '}';
+    }
 
     public Prepayment() {
     }
