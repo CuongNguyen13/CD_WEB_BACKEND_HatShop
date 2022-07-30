@@ -43,7 +43,7 @@ public class PrepaymentService {
             //date
             LocalDate myObj = LocalDate.now();
             prepayment.setDate(java.sql.Date.valueOf(myObj));
-            prepayment.setStatus(true);
+            prepayment.setStatus(0);
 
            Prepayment pre = prepaymentRespository.save(prepayment);
             for (int i = 0; i < cartList.size(); i++) {
@@ -74,7 +74,7 @@ public class PrepaymentService {
         billDTO.setPhone(prepayment.getPhoneNumber());
         billDTO.setId(prepayment.getId());
         billDTO.setTotal(prepayment.getPrice());
-        billDTO.setStatus(prepayment.isStatus());
+        billDTO.setStatus(prepayment.getStatus());
         return billDTO;
     }
 }

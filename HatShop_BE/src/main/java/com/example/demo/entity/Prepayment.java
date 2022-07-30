@@ -43,7 +43,7 @@ public class Prepayment {
     private Date date;
 
     @Column(name = "status")
-    private boolean status;
+    private int status;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
