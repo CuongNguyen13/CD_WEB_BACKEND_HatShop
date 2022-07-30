@@ -60,9 +60,11 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public ListPage<Products> findAllByPage(int page, int limit){
+    public ListPage<Products> findAllByPage(int page, int limit){ // truyền cái sort vs orderBy vô đây rồi xóa 2 cái kia
         ListPage<Products> resp = new ListPage<>();
-        Pageable paging = PageRequest.of(page - 1,limit);
+        String sort = "date";
+        String orderBy ="asc";
+        Pageable paging = PageRequest.of(page - 1,limit,orderBy.equals("asc") ? Sort.Direction.ASC : Sort.Direction.DESC,sort);
         Page<Products> pageData = productRepository.findByStatusTrue(paging);
 
         resp.setList(pageData.getContent());
