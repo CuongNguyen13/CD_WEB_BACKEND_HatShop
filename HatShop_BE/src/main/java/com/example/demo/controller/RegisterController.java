@@ -57,7 +57,6 @@ public class RegisterController {
             return false;
         }
     }
-
 }
 
 //{
