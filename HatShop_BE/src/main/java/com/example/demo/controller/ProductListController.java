@@ -17,7 +17,7 @@ public class ProductListController {
 
     @GetMapping(value = "/sort")
     public List<Products> sort(@RequestParam(name="field") String field) {
-      return  productService.getAllASC(field);
+      return  productService.listProductNew();
     }
 
     @GetMapping("/admin/listProduct")
