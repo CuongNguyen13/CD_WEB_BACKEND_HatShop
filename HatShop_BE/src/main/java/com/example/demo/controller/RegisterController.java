@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.User;
 import com.example.demo.model.UserModel;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,14 @@ public class RegisterController {
         } else {
             return false;
         }
+    }
+
+    @GetMapping(value = "/getId")
+    public int getId(@RequestParam String email) {
+        User u = userService.findByEmail(email);
+        System.out.println("email = " + email);
+        System.out.println("user get id = " + u);
+        return u.getId();
     }
 }
 
