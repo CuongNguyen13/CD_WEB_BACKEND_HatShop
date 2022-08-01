@@ -76,6 +76,11 @@ public class ProductService {
 
     }
 
+    public List<Products> listProductNew(){
+        List<Products> list = findAllByPage(1,8).getList();
+        return list;
+    }
+
     public ListPage<Products> findAllByKind(int page, int limit,String kind){
         ListPage<Products> resp = new ListPage<>();
         Pageable paging = PageRequest.of(page - 1,limit);
